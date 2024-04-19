@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BWSharedResource>
+    <name>MQConnect</name>
+    <resourceType>plugin.bwmq.ConnectionResource</resourceType>
+    <config>
+        <version>7.06.00</version>
+        <qmanagerbindingmode>remote</qmanagerbindingmode>
+        <host>%%Jms/mqServer%%</host>
+        <qmanagerport>%%Jms/mqPort%%</qmanagerport>
+        <qmanager/>
+        <pooled>true</pooled>
+        <qmanageractive>%%Jms/MaxConn%%</qmanageractive>
+        <qmanagerunused>%%Jms/MaxUnused%%</qmanagerunused>
+        <qmanagertimeout>%%Jms/Timeout%%</qmanagertimeout>
+        <tls>false</tls>
+        <keyorident>Keystore</keyorident>
+        <hdrcomp>false</hdrcomp>
+        <msgcomp>msgcomp_none</msgcomp>
+        <serverchannel>%%Jms/mqChannel%%</serverchannel>
+    </config>
+</BWSharedResource>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:pfx0="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Request_KP21.xsd" xmlns:pfx1="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Response_KP21.xsd" xmlns:tns="http://www.example.com/1475867562148" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.com/1475867562148">
+    <import namespace="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Request_KP21.xsd" location="../Resources/Schemas/Request_KP21.xsd"/>
+    <import namespace="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Response_KP21.xsd" location="../Resources/Schemas/Response_KP21.xsd"/>
+    <message name="AS_TIB_KP21_Cruce_P_Response">
+        <part element="pfx1:AS_TIB_KP21_Cruce_P_Response" name="parameters"/>
+    </message>
+    <message name="INPUT">
+        <part element="pfx0:INPUT" name="parameters"/>
+    </message>
+    <portType name="portType">
+        <operation name="getKP21_Cruce_P">
+            <input message="tns:INPUT"/>
+            <output message="tns:AS_TIB_KP21_Cruce_P_Response"/>
+        </operation>
+    </portType>
+</definitions>

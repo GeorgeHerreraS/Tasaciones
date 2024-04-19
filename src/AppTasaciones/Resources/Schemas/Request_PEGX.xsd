@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/WsCjMultiofertas/Schemas/Request_PEGX.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/WsCjMultiofertas/Schemas/Request_PEGX.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="INPUT">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="USUARIO-ALT"/>
+				<xs:element ref="TERMINAL-ALT"/>
+				<xs:element ref="CANAL-ID"/>
+				<xs:element ref="Entidad"/>
+				<xs:element ref="NumeroPersona"/>
+				<xs:element ref="TipoDocumento"/>
+				<xs:element ref="NumeroDocumento"/>
+				<xs:element ref="CanalaConsultar"/>
+				<xs:element ref="CruceaConsultar"/>
+				<xs:element ref="EstadoRelacion"/>
+				<xs:element ref="TipoLLamada"/>
+				<xs:element ref="ID-RECALL"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="USUARIO-ALT" type="xs:string"/>
+	<xs:element name="TERMINAL-ALT" type="xs:string"/>
+	<xs:element name="CANAL-ID" type="xs:string"/>
+	<xs:element name="Entidad" type="xs:string"/>
+	<xs:element name="NumeroPersona" type="xs:string"/>
+	<xs:element name="TipoDocumento" type="xs:string"/>
+	<xs:element name="NumeroDocumento" type="xs:string"/>
+	<xs:element name="CanalaConsultar" type="xs:string"/>
+	<xs:element name="CruceaConsultar" type="xs:string"/>
+	<xs:element name="EstadoRelacion" type="xs:string"/>
+	<xs:element name="TipoLLamada" type="xs:string"/>
+	<xs:element name="ID-RECALL" type="xs:string"/>
+</xs:schema>

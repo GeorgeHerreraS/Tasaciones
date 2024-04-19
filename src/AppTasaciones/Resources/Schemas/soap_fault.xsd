@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/soap_fault.xsd"
+	 targetNamespace="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/soap_fault.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="TIB_BP28_ALTAbonoValeVistaCtaCte_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_BP3K_CONRutTitularYBeneficiarioIPFS_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_K403_CONMvtosDepositosEnDctosEnCuenta_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_KC06_CONModeloDAI_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_KCCC_CONTablaConvivencias_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_KTDT_CONInformacionTablasCorporativas_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_PEG7_CONDatosBasicosPersonaFisica_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_PE74_CONDeTelefono_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_B413_CONDatosBasicosCuenta_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_KP18_CONOficiales_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_BCSI_CONCuentasSaldoInstrumental_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_MPV3_CONSaldos_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_WM01_CONEstadoCuentasDisponibles_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_WMA3_CONEstadoCuentasInternacionales_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_KT93_CONSucEmpresaServCanje_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_WM93_CONUltimosMvtosOffice_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_WMA2_CONEstadoCuentasNacionales_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_KP13_CONDatosBasicos_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_BPF2_CONDetalleFactura_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_SP_SolucionProvisoriaAppOB_03_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_K520_MANTraspasoEntreCuentas_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="soap_fault">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="soap_code" type="xs:string" minOccurs="0"/>
+				<xs:element name="soap_string" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_TG63_CONBancoInstFinancierasOB_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_BU80_Alta_Tef_Unit_Otros_Bcos_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap_fault" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

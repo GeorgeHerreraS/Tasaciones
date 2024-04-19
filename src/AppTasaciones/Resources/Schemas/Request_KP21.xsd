@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Request_KP21.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Request_KP21.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="INPUT">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="USUARIO-ALT"/>
+				<xs:element ref="TERMINAL-ALT"/>
+				<xs:element ref="CANAL-ID"/>
+				<xs:element ref="MWPECDGENT"/>
+				<xs:element ref="MWPENUMPER"/>
+				<xs:element ref="MWPETIPDOC"/>
+				<xs:element ref="MWPENUMDOC"/>
+				<xs:element ref="MWPESECDOC"/>
+				<xs:element ref="MWPEESTREL"/>
+				<xs:element ref="MWKPCODCNL"/>
+				<xs:element ref="MWKPCODTPOCRU"/>
+				<xs:element ref="ID-RECALL"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="USUARIO-ALT" type="xs:string"/>
+	<xs:element name="TERMINAL-ALT" type="xs:string"/>
+	<xs:element name="CANAL-ID" type="xs:string"/>
+	<xs:element name="MWPECDGENT" type="xs:string"/>
+	<xs:element name="MWPENUMPER" type="xs:string"/>
+	<xs:element name="MWPETIPDOC" type="xs:string"/>
+	<xs:element name="MWPENUMDOC" type="xs:string"/>
+	<xs:element name="MWPESECDOC" type="xs:string"/>
+	<xs:element name="MWPEESTREL" type="xs:string"/>
+	<xs:element name="MWKPCODCNL" type="xs:string"/>
+	<xs:element name="MWKPCODTPOCRU" type="xs:string"/>
+	<xs:element name="ID-RECALL" type="xs:string"/>
+</xs:schema>

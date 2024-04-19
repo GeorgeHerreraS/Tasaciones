@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/pe/DeployedVarsType" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <pd:name>Process/SubProcess/FormatoJsonToMT.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType>
+        <xsd:element name="Entrada">
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:element name="MgsJson" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:element>
+    </pd:startType>
+    <pd:startX>256</pd:startX>
+    <pd:startY>93</pd:startY>
+    <pd:returnBindings>
+        <msgJsonMt>
+            <xsl:value-of select="concat('&quot;USUARIO-ALT',substring-after($JavaCod/javaCodeActivityOutput/Salida,&quot;USUARIO-ALT&quot;))"/>
+        </msgJsonMt>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType>
+        <xsd:element name="msgJsonMt" type="xsd:string"/>
+    </pd:endType>
+    <pd:endX>546</pd:endX>
+    <pd:endY>93</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1462420949257</pd:targetNamespace>
+    <pd:activity name="JavaCod">
+        <pd:type>com.tibco.plugin.java.JavaActivity</pd:type>
+        <pd:resourceType>ae.javapalette.javaActivity</pd:resourceType>
+        <pd:x>388</pd:x>
+        <pd:y>94</pd:y>
+        <config>
+            <fileName>FormatoJsonToMTJavaCod</fileName>
+            <packageName>Process.SubProcess.FormatoJsonToMT</packageName>
+            <fullsource>package Process.SubProcess.FormatoJsonToMT;
+import java.util.*;
+import java.io.*;
+public class FormatoJsonToMTJavaCod{
+/****** START SET/GET METHOD, DO NOT MODIFY *****/
+	protected String Texto = "";
+	protected String RegExpresiones = "";
+	protected String ReplaceTxt = "";
+	protected String Salida = "";
+	public String getTexto() {
+		return Texto;
+	}
+	public void setTexto(String val) {
+		Texto = val;
+	}
+	public String getRegExpresiones() {
+		return RegExpresiones;
+	}
+	public void setRegExpresiones(String val) {
+		RegExpresiones = val;
+	}
+	public String getReplaceTxt() {
+		return ReplaceTxt;
+	}
+	public void setReplaceTxt(String val) {
+		ReplaceTxt = val;
+	}
+	public String getSalida() {
+		return Salida;
+	}
+	public void setSalida(String val) {
+		Salida = val;
+	}
+/****** END SET/GET METHOD, DO NOT MODIFY *****/
+	public FormatoJsonToMTJavaCod() {
+	}
+	public void invoke() throws Exception {
+/* Available Variables: DO NOT MODIFY
+	In  : String Texto
+	In  : String RegExpresiones
+	In  : String ReplaceTxt
+	Out : String Salida
+* Available Variables: DO NOT MODIFY *****/
+
+String 	txt1	= "";
+String 	output	= "";
+String  	RegExp 	= "";
+int    	inicio	= 0;
+int    	fin	= 0;
+int 		pos	= 0;
+int     pos2 = 0;
+	
+ 	pos	= Texto.indexOf(":");
+        pos2    = Texto.indexOf("\"");
+        //RegExp 	= Texto.substring(pos-3, pos+1);
+	RegExp 	= Texto.substring(pos2+1, pos+1);
+        System.out.println(RegExp +"\n");
+
+	if(RegExp.indexOf('"') &gt;=0)
+	{
+		System.out.println("Entrada a IF");
+		//output	= Texto.replaceAll(" "," ");
+		txt1 		= Texto.replaceAll("\n","");
+		inicio	= txt1.indexOf(":")+1;
+		fin		= txt1.length();
+	}
+	else
+	{
+		output		= Texto.replaceAll(RegExp, ReplaceTxt);
+		//output	= txt1.replaceAll(" "," ");
+		txt1 		= output.replaceAll("\n","");
+		inicio	= txt1.indexOf(",")+1;
+		fin		= txt1.length();
+	}
+
+	Salida	= txt1.substring(inicio,fin);
+        //System.out.print("salida "+Salida);
+
+}
+}
+</fullsource>
+            <outputData>
+                <row>
+                    <fieldName>Salida</fieldName>
+                    <fieldType>string</fieldType>
+                    <fieldRequired>optional</fieldRequired>
+                </row>
+            </outputData>
+            <inputData>
+                <row>
+                    <fieldName>Texto</fieldName>
+                    <fieldType>string</fieldType>
+                    <fieldRequired>optional</fieldRequired>
+                </row>
+                <row>
+                    <fieldName>RegExpresiones</fieldName>
+                    <fieldType>string</fieldType>
+                    <fieldRequired>optional</fieldRequired>
+                </row>
+                <row>
+                    <fieldName>ReplaceTxt</fieldName>
+                    <fieldType>string</fieldType>
+                    <fieldRequired>optional</fieldRequired>
+                </row>
+            </inputData>
+            <byteCode>
+                <class>
+                    <name>FormatoJsonToMTJavaCod</name>
+                    <byteCode>yv66vgAAADIAYQkAFwA0CQAXADUJABcANgkAFwA3CgAYADgIADkIADoKADsAPAgAPQoAOwA+CQA/AEAHAEEKAAwAOAoADABCCABDCgAMAEQKAEUARgoAOwBHCABICgA7AEkKADsASggASwcATAcATQEABVRleHRvAQASTGphdmEvbGFuZy9TdHJpbmc7AQAOUmVnRXhwcmVzaW9uZXMBAApSZXBsYWNlVHh0AQAGU2FsaWRhAQAIZ2V0VGV4dG8BABQoKUxqYXZhL2xhbmcvU3RyaW5nOwEABENvZGUBAA9MaW5lTnVtYmVyVGFibGUBAAhzZXRUZXh0bwEAFShMamF2YS9sYW5nL1N0cmluZzspVgEAEWdldFJlZ0V4cHJlc2lvbmVzAQARc2V0UmVnRXhwcmVzaW9uZXMBAA1nZXRSZXBsYWNlVHh0AQANc2V0UmVwbGFjZVR4dAEACWdldFNhbGlkYQEACXNldFNhbGlkYQEABjxpbml0PgEAAygpVgEABmludm9rZQEADVN0YWNrTWFwVGFibGUHAEwHAE4BAApFeGNlcHRpb25zBwBPAQAKU291cmNlRmlsZQEAG0Zvcm1hdG9Kc29uVG9NVEphdmFDb2QuamF2YQwAGQAaDAAbABoMABwAGgwAHQAaDAAqACsBAAABAAE6BwBODABQAFEBAAEiDABSAFMHAFQMAFUAVgEAF2phdmEvbGFuZy9TdHJpbmdCdWlsZGVyDABXAFgBAAEKDABZAB8HAFoMAFsAIwwAUABcAQAMRW50cmFkYSBhIElGDABdAF4MAF8AYAEAASwBADlQcm9jZXNzL1N1YlByb2Nlc3MvRm9ybWF0b0pzb25Ub01UL0Zvcm1hdG9Kc29uVG9NVEphdmFDb2QBABBqYXZhL2xhbmcvT2JqZWN0AQAQamF2YS9sYW5nL1N0cmluZwEAE2phdmEvbGFuZy9FeGNlcHRpb24BAAdpbmRleE9mAQAVKExqYXZhL2xhbmcvU3RyaW5nOylJAQAJc3Vic3RyaW5nAQAWKElJKUxqYXZhL2xhbmcvU3RyaW5nOwEAEGphdmEvbGFuZy9TeXN0ZW0BAANvdXQBABVMamF2YS9pby9QcmludFN0cmVhbTsBAAZhcHBlbmQBAC0oTGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL2xhbmcvU3RyaW5nQnVpbGRlcjsBAAh0b1N0cmluZwEAE2phdmEvaW8vUHJpbnRTdHJlYW0BAAdwcmludGxuAQAEKEkpSQEACnJlcGxhY2VBbGwBADgoTGphdmEvbGFuZy9TdHJpbmc7TGphdmEvbGFuZy9TdHJpbmc7KUxqYXZhL2xhbmcvU3RyaW5nOwEABmxlbmd0aAEAAygpSQAhABcAGAAAAAQABAAZABoAAAAEABsAGgAAAAQAHAAaAAAABAAdABoAAAAKAAEAHgAfAAEAIAAAAB0AAQABAAAABSq0AAGwAAAAAQAhAAAABgABAAAACwABACIAIwABACAAAAAiAAIAAgAAAAYqK7UAAbEAAAABACEAAAAKAAIAAAAOAAUADwABACQAHwABACAAAAAdAAEAAQAAAAUqtAACsAAAAAEAIQAAAAYAAQAAABEAAQAlACMAAQAgAAAAIgACAAIAAAAGKiu1AAKxAAAAAQAhAAAACgACAAAAFAAFABUAAQAmAB8AAQAgAAAAHQABAAEAAAAFKrQAA7AAAAABACEAAAAGAAEAAAAXAAEAJwAjAAEAIAAAACIAAgACAAAABiortQADsQAAAAEAIQAAAAoAAgAAABoABQAbAAEAKAAfAAEAIAAAAB0AAQABAAAABSq0AASwAAAAAQAhAAAABgABAAAAHQABACkAIwABACAAAAAiAAIAAgAAAAYqK7UABLEAAAABACEAAAAKAAIAAAAgAAUAIQABACoAKwABACAAAABJAAIAAQAAAB0qtwAFKhIGtQABKhIGtQACKhIGtQADKhIGtQAEsQAAAAEAIQAAABoABgAAACMABAAGAAoABwAQAAgAFgAJABwAJAABACwAKwACACAAAAFDAAQACAAAALcSBkwSBk0SBk4DNgQDNgUDNgYDNgcqtAABEge2AAg2Biq0AAESCbYACDYHKrQAARUHBGAVBgRgtgAKTrIAC7sADFm3AA0ttgAOEg+2AA62ABC2ABEtECK2ABKbACqyAAsSE7YAESq0AAESDxIGtgAUTCsSB7YACARgNgQrtgAVNgWnACkqtAABLSq0AAO2ABRNLBIPEga2ABRMKxIWtgAIBGA2BCu2ABU2BSorFQQVBbYACrUABLEAAAACACEAAABaABYAAAAtAAMALgAGAC8ACQAwAAwAMQAPADIAEgAzABUANQAgADYAKwA4ADsAOQBUADsAXQA9AGUAPwBxAEAAewBBAIQARQCRAEcAmgBIAKQASQCqAEwAtgBPAC0AAAAaAAL/AIQACAcALgcALwcALwcALwEBAQEAACUAMAAAAAQAAQAxAAEAMgAAAAIAMw==</byteCode>
+                </class>
+            </byteCode>
+        </config>
+        <pd:inputBindings>
+            <javaCodeActivityInput>
+                <Texto>
+                    <xsl:value-of select="$Start/Entrada/MgsJson"/>
+                </Texto>
+                <RegExpresiones>
+                    <xsl:value-of select="$_globalVariables/ns:GlobalVariables/Jms/MqRegEx2"/>
+                </RegExpresiones>
+                <ReplaceTxt>
+                    <xsl:value-of select="&quot;&quot;"/>
+                </ReplaceTxt>
+            </javaCodeActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>JavaCod</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JavaCod</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

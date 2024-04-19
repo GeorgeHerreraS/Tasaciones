@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/INFO.xsd"
+	 targetNamespace="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/INFO.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="INFO">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="CODERR" type="xs:string"/>
+				<xs:element name="DESERR" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

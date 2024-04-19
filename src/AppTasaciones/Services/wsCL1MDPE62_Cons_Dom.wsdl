@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:pfx0="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Request_PE62.xsd" xmlns:pfx1="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Response_PE62.xsd" xmlns:tns="http://www.example.com/1475848239327" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.com/1475848239327">
+    <import namespace="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Request_PE62.xsd" location="../Resources/Schemas/Request_PE62.xsd"/>
+    <import namespace="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Response_PE62.xsd" location="../Resources/Schemas/Response_PE62.xsd"/>
+    <message name="AS_TIB_PE62_Cons_Dom_Response">
+        <part element="pfx1:AS_TIB_PE62_Cons_Dom_Response" name="parameters"/>
+    </message>
+    <message name="INPUT">
+        <part element="pfx0:INPUT" name="parameters"/>
+    </message>
+    <portType name="portType">
+        <operation name="getPE62_Cons_Dom">
+            <input message="tns:INPUT"/>
+            <output message="tns:AS_TIB_PE62_Cons_Dom_Response"/>
+        </operation>
+    </portType>
+</definitions>

@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<repository xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://www.tibco.com/xmlns/repo/types/2002">
+	<globalVariables>
+		<globalVariable>
+			<name>Port</name>
+			<value>13330</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Integer</type>
+			<modTime>1519846664112</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>jksPSW</name>
+			<value>#!+LQMm4l8JRC41dIBHKiNz11G5bGeVmX3kibgoSR6NCI=</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Password</type>
+			<modTime>1474384047919</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>jksURL</name>
+			<value>file:///software/tibco_bw/utilities/key/dgstcaqtb40.cl.bsch.jks</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1519847489096</modTime>
+		</globalVariable>
+	</globalVariables>
+</repository>

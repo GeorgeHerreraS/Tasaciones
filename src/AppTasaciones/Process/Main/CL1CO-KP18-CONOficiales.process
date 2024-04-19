@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/INFO.xsd" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/KP18.xsd" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns12="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:pfx="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/CO_KP18.xsd">
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/CO_KP18.xsd" schemaLocation="/Resources/Schemas/CO_KP18.xsd"/>
+    <pd:name>Process/Main/CL1CO-KP18-CONOficiales.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx:INPUT"/>
+    <pd:startX>150</pd:startX>
+    <pd:startY>63</pd:startY>
+    <pd:returnBindings>
+        <xsl:variable name="Rellamada" select="concat(&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:SEGLLA,1),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:OPCION,1),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENUMPU,4),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENUMPE,8),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:TIPDOC,2),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENUMDO,11),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:SECDOC,2),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PETIOFI,3),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMFA,30),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEPRIAP,20),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PESEGAP,20),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMPE,40),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEFECNA,10),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PETIPPE,1),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEESTPE,3),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PECONPE,3),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENIVAC,1),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDRE,1),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDCO,1),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDGR,1),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDAV,1),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN1,1),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN2,1),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN3,1),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN4,1),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN5,1),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PETIPVI,2),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMCA,50),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEOBSE1,100),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEOBSE2,100),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENUMBL,10),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMLO,7),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMCO,5),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PECODPO,8),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PERUTCA,9),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:CODPRV,2),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PECODPA,3),&#xA;tib:pad($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEMARNO,1)&#xA;)"/>
+        <pfx:TIB_CO_KP18_CONOficiales_Response>
+            <xsl:copy-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns2:INFO"/>
+            <pfx:OUTPUT>
+                <pfx:ESCALARES>
+                    <pfx:Id-Recall>
+                        <xsl:value-of select="if(substring($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns2:INFO/ns2:DESERR, 2,9) = 'AVPEA8001')&#xA;then $Rellamada&#xA;else $_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                    </pfx:Id-Recall>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:SEGLLA">
+                        <pfx:CodigoLlamada>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:SEGLLA"/>
+                        </pfx:CodigoLlamada>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:OPCION">
+                        <pfx:Opcion>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:OPCION"/>
+                        </pfx:Opcion>
+                    </xsl:if>
+                    <pfx:NumeroPuesto_E>
+                        <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENUMPU"/>
+                    </pfx:NumeroPuesto_E>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENUMPE">
+                        <pfx:NumeroCliente_E>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENUMPE"/>
+                        </pfx:NumeroCliente_E>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:TIPDOC">
+                        <pfx:TipoDocumento>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:TIPDOC"/>
+                        </pfx:TipoDocumento>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENUMDO">
+                        <pfx:NumeroDocumento>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENUMDO"/>
+                        </pfx:NumeroDocumento>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:SECDOC">
+                        <pfx:SecuenciaIdentificacionDocumento>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:SECDOC"/>
+                        </pfx:SecuenciaIdentificacionDocumento>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PETIOFI">
+                        <pfx:TipoOficial_E>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PETIOFI"/>
+                        </pfx:TipoOficial_E>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMFA">
+                        <pfx:NombreFantasia>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMFA"/>
+                        </pfx:NombreFantasia>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEPRIAP">
+                        <pfx:PrimerApellido>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEPRIAP"/>
+                        </pfx:PrimerApellido>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PESEGAP">
+                        <pfx:SegundoApellido>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PESEGAP"/>
+                        </pfx:SegundoApellido>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMPE">
+                        <pfx:NombreRazonSocial>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMPE"/>
+                        </pfx:NombreRazonSocial>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEFECNA">
+                        <pfx:FechaNacimiento>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEFECNA"/>
+                        </pfx:FechaNacimiento>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PETIPPE">
+                        <pfx:TipoPersona>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PETIPPE"/>
+                        </pfx:TipoPersona>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEESTPE">
+                        <pfx:EstadoPersona>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEESTPE"/>
+                        </pfx:EstadoPersona>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PECONPE">
+                        <pfx:Condicion>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PECONPE"/>
+                        </pfx:Condicion>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENIVAC">
+                        <pfx:NivelAcceso>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENIVAC"/>
+                        </pfx:NivelAcceso>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDRE">
+                        <pfx:IndicadorRelacionPersonas>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDRE"/>
+                        </pfx:IndicadorRelacionPersonas>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDCO">
+                        <pfx:IndicadorContratos>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDCO"/>
+                        </pfx:IndicadorContratos>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDGR">
+                        <pfx:PertenenciaGrupos>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDGR"/>
+                        </pfx:PertenenciaGrupos>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDAV">
+                        <pfx:IndicadorAvisos>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDAV"/>
+                        </pfx:IndicadorAvisos>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN1">
+                        <pfx:MarcaClienteVip>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN1"/>
+                        </pfx:MarcaClienteVip>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN2">
+                        <pfx:IndicadorUso2>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN2"/>
+                        </pfx:IndicadorUso2>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN3">
+                        <pfx:IndicadorUso3>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN3"/>
+                        </pfx:IndicadorUso3>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN4">
+                        <pfx:IndicadorUso4>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN4"/>
+                        </pfx:IndicadorUso4>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN5">
+                        <pfx:IndicadorUso5>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEINDN5"/>
+                        </pfx:IndicadorUso5>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PETIPVI">
+                        <pfx:TipoVia>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PETIPVI"/>
+                        </pfx:TipoVia>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMCA">
+                        <pfx:Calle>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMCA"/>
+                        </pfx:Calle>
+                    </xsl:if>
+                    <pfx:Complemento_variable1_ResDir>
+                        <xsl:value-of select="substring($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEOBSE1,1,50)"/>
+                    </pfx:Complemento_variable1_ResDir>
+                    <pfx:Complemento_variable1_FecDev>
+                        <xsl:value-of select="substring($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEOBSE1,51,10)"/>
+                    </pfx:Complemento_variable1_FecDev>
+                    <pfx:Complemento_variable1_FechCorr>
+                        <xsl:value-of select="substring($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEOBSE1,61,10)"/>
+                    </pfx:Complemento_variable1_FechCorr>
+                    <pfx:Complemento_variable1_nomcor>
+                        <xsl:value-of select="substring($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEOBSE1,71,15)"/>
+                    </pfx:Complemento_variable1_nomcor>
+                    <pfx:Complemento_variable1_filler>
+                        <xsl:value-of select="substring($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEOBSE1,86,15)"/>
+                    </pfx:Complemento_variable1_filler>
+                    <pfx:Complemento_variable2_DirForBan>
+                        <xsl:value-of select="substring($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEOBSE2,1,30)"/>
+                    </pfx:Complemento_variable2_DirForBan>
+                    <pfx:Complemento_variable2_filler>
+                        <xsl:value-of select="substring($CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEOBSE1,31,70)"/>
+                    </pfx:Complemento_variable2_filler>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENUMBL">
+                        <pfx:NumeroBloque>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENUMBL"/>
+                        </pfx:NumeroBloque>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMLO">
+                        <pfx:Localidad>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMLO"/>
+                        </pfx:Localidad>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMCO">
+                        <pfx:NombreComuna>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PENOMCO"/>
+                        </pfx:NombreComuna>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PECODPO">
+                        <pfx:CodigoPostal>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PECODPO"/>
+                        </pfx:CodigoPostal>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PERUTCA">
+                        <pfx:RutaCartero>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PERUTCA"/>
+                        </pfx:RutaCartero>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:CODPRV">
+                        <pfx:CodigoProvincia>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:CODPRV"/>
+                        </pfx:CodigoProvincia>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PECODPA">
+                        <pfx:CodigoPais>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PECODPA"/>
+                        </pfx:CodigoPais>
+                    </xsl:if>
+                    <xsl:if test="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEMARNO">
+                        <pfx:MarcaNormalizacion>
+                            <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:PEMARNO"/>
+                        </pfx:MarcaNormalizacion>
+                    </xsl:if>
+                    <pfx:GlosaTipoOficial>
+                        <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:GLSTIPOFI"/>
+                    </pfx:GlosaTipoOficial>
+                    <pfx:GlosaEstadoPersona>
+                        <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:GLSESTPER"/>
+                    </pfx:GlosaEstadoPersona>
+                    <pfx:GlosaCondicionPersona>
+                        <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:GLSCONPER"/>
+                    </pfx:GlosaCondicionPersona>
+                    <pfx:GlosaLocalidad>
+                        <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:GLSNOMLOC"/>
+                    </pfx:GlosaLocalidad>
+                    <pfx:GlosaComuna>
+                        <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:GLSNOMCOM"/>
+                    </pfx:GlosaComuna>
+                    <pfx:GlosaProvincia>
+                        <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:GLSNOMPRO"/>
+                    </pfx:GlosaProvincia>
+                    <pfx:GlosaPais>
+                        <xsl:value-of select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:ESCALARES/ns:GLSNOMPAI"/>
+                    </pfx:GlosaPais>
+                </pfx:ESCALARES>
+                <xsl:for-each select="$CL1MDKP18-CONOficiales/ns:TIB_KP18_CONOficiales_Response/ns:OUTPUT/ns:MATRIZ">
+                    <pfx:MATRIZ>
+                        <xsl:if test="ns:PENUMPU">
+                            <pfx:NumeroPuesto>
+                                <xsl:value-of select="ns:PENUMPU"/>
+                            </pfx:NumeroPuesto>
+                        </xsl:if>
+                        <xsl:if test="ns:PENUMPE">
+                            <pfx:NumeroCliente>
+                                <xsl:value-of select="ns:PENUMPE"/>
+                            </pfx:NumeroCliente>
+                        </xsl:if>
+                        <xsl:if test="ns:PETIPOF">
+                            <pfx:TipoOficial>
+                                <xsl:value-of select="ns:PETIPOF"/>
+                            </pfx:TipoOficial>
+                        </xsl:if>
+                        <xsl:if test="ns:PEUSERI">
+                            <pfx:UserId>
+                                <xsl:value-of select="ns:PEUSERI"/>
+                            </pfx:UserId>
+                        </xsl:if>
+                        <xsl:if test="ns:PETIPBA">
+                            <pfx:TipoBanca>
+                                <xsl:value-of select="ns:PETIPBA"/>
+                            </pfx:TipoBanca>
+                        </xsl:if>
+                        <xsl:if test="ns:PEREGOF">
+                            <pfx:RegionOficial>
+                                <xsl:value-of select="ns:PEREGOF"/>
+                            </pfx:RegionOficial>
+                        </xsl:if>
+                        <xsl:if test="ns:PEZONOF">
+                            <pfx:ZonaOficial>
+                                <xsl:value-of select="ns:PEZONOF"/>
+                            </pfx:ZonaOficial>
+                        </xsl:if>
+                        <xsl:if test="ns:PENUMSU">
+                            <pfx:NumeroSucursal>
+                                <xsl:value-of select="ns:PENUMSU"/>
+                            </pfx:NumeroSucursal>
+                        </xsl:if>
+                        <xsl:if test="ns:PECENCO">
+                            <pfx:CentroCosto>
+                                <xsl:value-of select="ns:PECENCO"/>
+                            </pfx:CentroCosto>
+                        </xsl:if>
+                        <xsl:if test="ns:PENUMPT">
+                            <pfx:NumeroPuestoDepende>
+                                <xsl:value-of select="ns:PENUMPT"/>
+                            </pfx:NumeroPuestoDepende>
+                        </xsl:if>
+                        <xsl:if test="ns:PENIVRE">
+                            <pfx:NivelResponsable>
+                                <xsl:value-of select="ns:PENIVRE"/>
+                            </pfx:NivelResponsable>
+                        </xsl:if>
+                        <xsl:if test="ns:PEESTAC">
+                            <pfx:EstadoActual>
+                                <xsl:value-of select="ns:PEESTAC"/>
+                            </pfx:EstadoActual>
+                        </xsl:if>
+                        <xsl:if test="ns:PEESTAN">
+                            <pfx:EstadoAnterior>
+                                <xsl:value-of select="ns:PEESTAN"/>
+                            </pfx:EstadoAnterior>
+                        </xsl:if>
+                        <pfx:FechaEstado>
+                            <xsl:value-of select="ns:FECEST"/>
+                        </pfx:FechaEstado>
+                        <pfx:RangoOficial>
+                            <xsl:value-of select="ns:PERANOF"/>
+                        </pfx:RangoOficial>
+                        <pfx:SegmentodelOficial>
+                            <xsl:value-of select="ns:PESEGOF"/>
+                        </pfx:SegmentodelOficial>
+                        <pfx:UsuarioAlta>
+                            <xsl:value-of select="ns:PEUSUAL"/>
+                        </pfx:UsuarioAlta>
+                        <xsl:if test="ns:PEFECAL">
+                            <pfx:FechaAlta>
+                                <xsl:value-of select="ns:PEFECAL"/>
+                            </pfx:FechaAlta>
+                        </xsl:if>
+                        <xsl:if test="ns:PEUSUMO">
+                            <pfx:UsuarioModificacion>
+                                <xsl:value-of select="ns:PEUSUMO"/>
+                            </pfx:UsuarioModificacion>
+                        </xsl:if>
+                        <pfx:TerminalModificacion>
+                            <xsl:value-of select="ns:PETERMO"/>
+                        </pfx:TerminalModificacion>
+                        <pfx:SucursalModificacion>
+                            <xsl:value-of select="ns:PESUCMO"/>
+                        </pfx:SucursalModificacion>
+                        <xsl:if test="ns:PEHSTAM">
+                            <pfx:Timestamp>
+                                <xsl:value-of select="ns:PEHSTAM"/>
+                            </pfx:Timestamp>
+                        </xsl:if>
+                        <xsl:if test="ns:PEOBSE1">
+                            <pfx:Observaciones1>
+                                <xsl:value-of select="ns:PEOBSE1"/>
+                            </pfx:Observaciones1>
+                        </xsl:if>
+                        <xsl:if test="ns:PEOBSE2">
+                            <pfx:Observaciones2>
+                                <xsl:value-of select="ns:PEOBSE2"/>
+                            </pfx:Observaciones2>
+                        </xsl:if>
+                        <xsl:if test="ns:GLSTPOF">
+                            <pfx:GlosaTipoOficial_M>
+                                <xsl:value-of select="ns:GLSTPOF"/>
+                            </pfx:GlosaTipoOficial_M>
+                        </xsl:if>
+                        <xsl:if test="ns:GLSSGOF">
+                            <pfx:GlosaSegmentoOficial>
+                                <xsl:value-of select="ns:GLSSGOF"/>
+                            </pfx:GlosaSegmentoOficial>
+                        </xsl:if>
+                        <xsl:if test="ns:GLSNSUC">
+                            <pfx:GlosaNumeroSucursal>
+                                <xsl:value-of select="ns:GLSNSUC"/>
+                            </pfx:GlosaNumeroSucursal>
+                        </xsl:if>
+                        <xsl:if test="ns:PEINDRE">
+                            <pfx:Indicador>
+                                <xsl:value-of select="ns:PEINDRE"/>
+                            </pfx:Indicador>
+                        </xsl:if>
+                    </pfx:MATRIZ>
+                </xsl:for-each>
+            </pfx:OUTPUT>
+        </pfx:TIB_CO_KP18_CONOficiales_Response>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx:TIB_CO_KP18_CONOficiales_Response"/>
+    <pd:endX>702</pd:endX>
+    <pd:endY>62</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://itg.isban.cl/AppOfficeBanking/Process/CL1CO-KP18-CONOficiales</pd:targetNamespace>
+    <pd:activity name="CL1MDKP18-CONOficiales">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>416</pd:x>
+        <pd:y>63</pd:y>
+        <config>
+            <processName>/Process/Atomicos/CL1MDKP18-CONOficiales.process</processName>
+        </config>
+        <pd:inputBindings>
+            <xsl:choose>
+                <xsl:when test="string-length($Start/pfx:INPUT/pfx:IDRECALL) = 0">
+                    <ns:INPUT>
+                        <ns:USUARIO-ALT>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:USUARIO-ALT"/>
+                        </ns:USUARIO-ALT>
+                        <ns:TERMINAL-ALT>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:TERMINAL-ALT"/>
+                        </ns:TERMINAL-ALT>
+                        <ns:CANAL-ID>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:CANAL-ID"/>
+                        </ns:CANAL-ID>
+                        <ns:FILLER>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:FILLER"/>
+                        </ns:FILLER>
+                        <ns:SEGLLA>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:SEGLLA"/>
+                        </ns:SEGLLA>
+                        <ns:OPCION>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:OPCION"/>
+                        </ns:OPCION>
+                        <ns:PENUMPU>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:PENUMPU"/>
+                        </ns:PENUMPU>
+                        <ns:PENUMPE>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:PENUMPE"/>
+                        </ns:PENUMPE>
+                        <ns:TIPDOC>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:TIPDOC"/>
+                        </ns:TIPDOC>
+                        <ns:PENUMDO>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:PENUMDO"/>
+                        </ns:PENUMDO>
+                        <ns:SECDOC>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:SECDOC"/>
+                        </ns:SECDOC>
+                        <ns:PETIOFI>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:PETIOFI"/>
+                        </ns:PETIOFI>
+                        <ns:PENOMFA>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PENOMFA>
+                        <ns:PEPRIAP>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEPRIAP>
+                        <ns:PESEGAP>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PESEGAP>
+                        <ns:PENOMPE>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PENOMPE>
+                        <ns:PEFECNA>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEFECNA>
+                        <ns:PETIPPE>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PETIPPE>
+                        <ns:PEESTPE>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEESTPE>
+                        <ns:PECONPE>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PECONPE>
+                        <ns:PENIVAC>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PENIVAC>
+                        <ns:PEINDRE>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEINDRE>
+                        <ns:PEINDCO>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEINDCO>
+                        <ns:PEINDGR>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEINDGR>
+                        <ns:PEINDAV>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEINDAV>
+                        <ns:PEINDN1>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEINDN1>
+                        <ns:PEINDN2>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEINDN2>
+                        <ns:PEINDN3>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEINDN3>
+                        <ns:PEINDN4>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEINDN4>
+                        <ns:PEINDN5>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEINDN5>
+                        <ns:PETIPVI>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PETIPVI>
+                        <ns:PENOMCA>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PENOMCA>
+                        <ns:PEOBSE1>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEOBSE1>
+                        <ns:PEOBSE2>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEOBSE2>
+                        <ns:PENUMBL>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PENUMBL>
+                        <ns:PENOMLO>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PENOMLO>
+                        <ns:PENOMCO>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PENOMCO>
+                        <ns:PECODPO>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PECODPO>
+                        <ns:PERUTCA>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PERUTCA>
+                        <ns:CODPRV>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:CODPRV>
+                        <ns:PECODPA>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PECODPA>
+                        <ns:PEMARNO>
+                            <xsl:value-of select="$_globalVariables/ns1:GlobalVariables/Globales/VACIO"/>
+                        </ns:PEMARNO>
+                    </ns:INPUT>
+                </xsl:when>
+                <xsl:otherwise>
+                    <ns:INPUT>
+                        <ns:USUARIO-ALT>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:USUARIO-ALT"/>
+                        </ns:USUARIO-ALT>
+                        <ns:TERMINAL-ALT>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:TERMINAL-ALT"/>
+                        </ns:TERMINAL-ALT>
+                        <ns:CANAL-ID>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:CANAL-ID"/>
+                        </ns:CANAL-ID>
+                        <ns:FILLER>
+                            <xsl:value-of select="$Start/pfx:INPUT/pfx:FILLER"/>
+                        </ns:FILLER>
+                        <ns:SEGLLA>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,1,1)"/>
+                        </ns:SEGLLA>
+                        <ns:OPCION>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,2,1)"/>
+                        </ns:OPCION>
+                        <ns:PENUMPU>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,3,4)"/>
+                        </ns:PENUMPU>
+                        <ns:PENUMPE>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,7,8)"/>
+                        </ns:PENUMPE>
+                        <ns:TIPDOC>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,15,2)"/>
+                        </ns:TIPDOC>
+                        <ns:PENUMDO>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,17,11)"/>
+                        </ns:PENUMDO>
+                        <ns:SECDOC>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,28,2)"/>
+                        </ns:SECDOC>
+                        <ns:PETIOFI>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,30,3)"/>
+                        </ns:PETIOFI>
+                        <ns:PENOMFA>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,33,30)"/>
+                        </ns:PENOMFA>
+                        <ns:PEPRIAP>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,63,20)"/>
+                        </ns:PEPRIAP>
+                        <ns:PESEGAP>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,83,20)"/>
+                        </ns:PESEGAP>
+                        <ns:PENOMPE>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,103,40)"/>
+                        </ns:PENOMPE>
+                        <ns:PEFECNA>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,143,10)"/>
+                        </ns:PEFECNA>
+                        <ns:PETIPPE>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,153,1)"/>
+                        </ns:PETIPPE>
+                        <ns:PEESTPE>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,154,3)"/>
+                        </ns:PEESTPE>
+                        <ns:PECONPE>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,157,3)"/>
+                        </ns:PECONPE>
+                        <ns:PENIVAC>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,160,1)"/>
+                        </ns:PENIVAC>
+                        <ns:PEINDRE>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,161,1)"/>
+                        </ns:PEINDRE>
+                        <ns:PEINDCO>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,162,1)"/>
+                        </ns:PEINDCO>
+                        <ns:PEINDGR>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,163,1)"/>
+                        </ns:PEINDGR>
+                        <ns:PEINDAV>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,164,1)"/>
+                        </ns:PEINDAV>
+                        <ns:PEINDN1>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,165,1)"/>
+                        </ns:PEINDN1>
+                        <ns:PEINDN2>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,166,1)"/>
+                        </ns:PEINDN2>
+                        <ns:PEINDN3>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,167,1)"/>
+                        </ns:PEINDN3>
+                        <ns:PEINDN4>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,168,1)"/>
+                        </ns:PEINDN4>
+                        <ns:PEINDN5>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,169,1)"/>
+                        </ns:PEINDN5>
+                        <ns:PETIPVI>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,170,2)"/>
+                        </ns:PETIPVI>
+                        <ns:PENOMCA>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,172,50)"/>
+                        </ns:PENOMCA>
+                        <ns:PEOBSE1>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,222,100)"/>
+                        </ns:PEOBSE1>
+                        <ns:PEOBSE2>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,322,100)"/>
+                        </ns:PEOBSE2>
+                        <ns:PENUMBL>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,422,10)"/>
+                        </ns:PENUMBL>
+                        <ns:PENOMLO>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,432,7)"/>
+                        </ns:PENOMLO>
+                        <ns:PENOMCO>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,439,5)"/>
+                        </ns:PENOMCO>
+                        <ns:PECODPO>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,444,8)"/>
+                        </ns:PECODPO>
+                        <ns:PERUTCA>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,452,9)"/>
+                        </ns:PERUTCA>
+                        <ns:CODPRV>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,461,2)"/>
+                        </ns:CODPRV>
+                        <ns:PECODPA>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,463,3)"/>
+                        </ns:PECODPA>
+                        <ns:PEMARNO>
+                            <xsl:value-of select="substring($Start/pfx:INPUT/pfx:IDRECALL,464,1)"/>
+                        </ns:PEMARNO>
+                    </ns:INPUT>
+                </xsl:otherwise>
+            </xsl:choose>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Log-Entrada">
+        <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
+        <pd:resourceType>ae.activities.log</pd:resourceType>
+        <pd:x>263</pd:x>
+        <pd:y>63</pd:y>
+        <config>
+            <role>User</role>
+        </config>
+        <pd:inputBindings>
+            <ns12:ActivityInput>
+                <message>
+                    <xsl:value-of select="tib:render-xml($Start/pfx:INPUT)"/>
+                </message>
+            </ns12:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Log-Salida">
+        <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
+        <pd:resourceType>ae.activities.log</pd:resourceType>
+        <pd:x>595</pd:x>
+        <pd:y>63</pd:y>
+        <config>
+            <role>User</role>
+        </config>
+        <pd:inputBindings>
+            <ns12:ActivityInput>
+                <message>
+                    <xsl:value-of select="tib:render-xml($CL1MDKP18-CONOficiales)"/>
+                </message>
+            </ns12:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Log-Entrada</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Log-Salida</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Log-Entrada</pd:from>
+        <pd:to>CL1MDKP18-CONOficiales</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>CL1MDKP18-CONOficiales</pd:from>
+        <pd:to>Log-Salida</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

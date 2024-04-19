@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Response_PE62.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Response_PE62.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="AS_TIB_PE62_Cons_Dom_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="INFO"/>
+				<xs:element ref="OUTPUT" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="INFO">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CODERR"/>
+				<xs:element ref="DESERR"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OUTPUT">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DATA_RESPUESTA1"/>
+				<xs:element ref="IDRECALL" minOccurs="0"/>
+				<xs:element ref="DATA_RESPUESTA2" minOccurs="0"/>
+				<xs:element ref="DATA_RESPUESTA3" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CODERR" type="xs:string"/>
+	<xs:element name="DESERR" type="xs:string"/>
+	<xs:element name="IDRECALL">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ID-RECALL" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DATA_RESPUESTA1">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PENUMPERR1" minOccurs="0"/>
+				<xs:element ref="PETIPDOCR1" minOccurs="0"/>
+				<xs:element ref="PENUMDOCR1" minOccurs="0"/>
+				<xs:element ref="PESECDOCR1" minOccurs="0"/>
+				<xs:element ref="PESECDOMR1" minOccurs="0"/>
+				<xs:element ref="PENOMFANR1" minOccurs="0"/>
+				<xs:element ref="PEPRIAPER1" minOccurs="0"/>
+				<xs:element ref="PESEGAPER1" minOccurs="0"/>
+				<xs:element ref="PENOMPERR1" minOccurs="0"/>
+				<xs:element ref="PEFECNACR1" minOccurs="0"/>
+				<xs:element ref="PETIPPERR1" minOccurs="0"/>
+				<xs:element ref="PEESTPERR1" minOccurs="0"/>
+				<xs:element ref="PECONPERR1" minOccurs="0"/>
+				<xs:element ref="PENIVACCR1" minOccurs="0"/>
+				<xs:element ref="PEINDRELR1" minOccurs="0"/>
+				<xs:element ref="PEINDCONR1" minOccurs="0"/>
+				<xs:element ref="PEINDGRUR1" minOccurs="0"/>
+				<xs:element ref="PEINDAVIR1" minOccurs="0"/>
+				<xs:element ref="PEINDNO1R1" minOccurs="0"/>
+				<xs:element ref="PEINDNO2R1" minOccurs="0"/>
+				<xs:element ref="PEINDNO3R1" minOccurs="0"/>
+				<xs:element ref="PEINDNO4R1" minOccurs="0"/>
+				<xs:element ref="PEINDNO5R1" minOccurs="0"/>
+				<xs:element ref="PETIPVIAR1" minOccurs="0"/>
+				<xs:element ref="PENOMCALR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER1RESDIRR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER1FDVCORR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER1FCORDIR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER1NOMCORR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER1FILLERR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER2DOMANTR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER2FILLERR1" minOccurs="0"/>
+				<xs:element ref="PENUMBLOR1" minOccurs="0"/>
+				<xs:element ref="PENOMLOCR1" minOccurs="0"/>
+				<xs:element ref="PENOMCOMR1" minOccurs="0"/>
+				<xs:element ref="PECODPOSR1" minOccurs="0"/>
+				<xs:element ref="PERUTCARR1" minOccurs="0"/>
+				<xs:element ref="PECODPROR1" minOccurs="0"/>
+				<xs:element ref="PECODPAIR1" minOccurs="0"/>
+				<xs:element ref="PEMARNORR1" minOccurs="0"/>
+				<xs:element ref="PEHSTAM1R1" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DATA_RESPUESTA2">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ESTPERGLSR1" minOccurs="0"/>
+				<xs:element ref="CONPERGLSR1" minOccurs="0"/>
+				<xs:element ref="NOMLOCGLSR1" minOccurs="0"/>
+				<xs:element ref="NOMCOMGLSR1" minOccurs="0"/>
+				<xs:element ref="CODPROGLSR1" minOccurs="0"/>
+				<xs:element ref="CODPAIGLSR1" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DATA_RESPUESTA3">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PENUMPERMR1" minOccurs="0"/>
+				<xs:element ref="PESECDOMMR1" minOccurs="0"/>
+				<xs:element ref="PETIPDOMMR1" minOccurs="0"/>
+				<xs:element ref="PETIPVIAMR1" minOccurs="0"/>
+				<xs:element ref="PENOMCALMR1" minOccurs="0"/>
+				<xs:element ref="PETIPCNTMR1" minOccurs="0"/>
+				<xs:element ref="PETIPNURMR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER1RESDIRMR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER1FDVCORMR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER1FCORDIMR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER1NOMCORMR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER1FILLERMR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER2DOMANTMR1" minOccurs="0"/>
+				<xs:element ref="PEOBSER2FILLERMR1" minOccurs="0"/>
+				<xs:element ref="PESUCCASMR1" minOccurs="0"/>
+				<xs:element ref="PENUMBLOMR1" minOccurs="0"/>
+				<xs:element ref="PENOMLOCMR1" minOccurs="0"/>
+				<xs:element ref="PEDESLOCMR1" minOccurs="0"/>
+				<xs:element ref="PENOMCOMMR1" minOccurs="0"/>
+				<xs:element ref="PEDESCMNMR1" minOccurs="0"/>
+				<xs:element ref="PECODPOSMR1" minOccurs="0"/>
+				<xs:element ref="PERUTCARMR1" minOccurs="0"/>
+				<xs:element ref="PECODPROMR1" minOccurs="0"/>
+				<xs:element ref="PECODPAIMR1" minOccurs="0"/>
+				<xs:element ref="PETITDOMMR1" minOccurs="0"/>
+				<xs:element ref="PEFECVERMR1" minOccurs="0"/>
+				<xs:element ref="PEMARNORMR1" minOccurs="0"/>
+				<xs:element ref="PEMARDOMMR1" minOccurs="0"/>
+				<xs:element ref="PEMARCORMR1" minOccurs="0"/>
+				<xs:element ref="PEMOTDEVMR1" minOccurs="0"/>
+				<xs:element ref="PEUSUALTMR1" minOccurs="0"/>
+				<xs:element ref="PEFECALTMR1" minOccurs="0"/>
+				<xs:element ref="PEUSUMODMR1" minOccurs="0"/>
+				<xs:element ref="PETERMODMR1" minOccurs="0"/>
+				<xs:element ref="PESUCMODMR1" minOccurs="0"/>
+				<xs:element ref="PEHSTAMPMR1" minOccurs="0"/>
+				<xs:element ref="TIPDOMGLSMR1" minOccurs="0"/>
+				<xs:element ref="CODPROGLSMR1" minOccurs="0"/>
+				<xs:element ref="CODPAIGLSMR1" minOccurs="0"/>
+				<xs:element ref="MOTDEVGLSMR1" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ID-RECALL" type="xs:string"/>
+	<xs:element name="PENUMPERR1" type="xs:string"/>
+	<xs:element name="PETIPDOCR1" type="xs:string"/>
+	<xs:element name="PENUMDOCR1" type="xs:string"/>
+	<xs:element name="PESECDOMR1" type="xs:string"/>
+	<xs:element name="PENOMFANR1" type="xs:string"/>
+	<xs:element name="PEPRIAPER1" type="xs:string"/>
+	<xs:element name="PESEGAPER1" type="xs:string"/>
+	<xs:element name="PENOMPERR1" type="xs:string"/>
+	<xs:element name="PEFECNACR1" type="xs:string"/>
+	<xs:element name="PETIPPERR1" type="xs:string"/>
+	<xs:element name="PEESTPERR1" type="xs:string"/>
+	<xs:element name="PECONPERR1" type="xs:string"/>
+	<xs:element name="PENIVACCR1" type="xs:string"/>
+	<xs:element name="PEINDRELR1" type="xs:string"/>
+	<xs:element name="PEINDCONR1" type="xs:string"/>
+	<xs:element name="PEINDGRUR1" type="xs:string"/>
+	<xs:element name="PEINDAVIR1" type="xs:string"/>
+	<xs:element name="PEINDNO1R1" type="xs:string"/>
+	<xs:element name="PEINDNO2R1" type="xs:string"/>
+	<xs:element name="PEINDNO3R1" type="xs:string"/>
+	<xs:element name="PEINDNO4R1" type="xs:string"/>
+	<xs:element name="PEINDNO5R1" type="xs:string"/>
+	<xs:element name="PETIPVIAR1" type="xs:string"/>
+	<xs:element name="PENOMCALR1" type="xs:string"/>
+	<xs:element name="PEOBSER1RESDIRR1" type="xs:string"/>
+	<xs:element name="PEOBSER1FDVCORR1" type="xs:string"/>
+	<xs:element name="PEOBSER1FCORDIR1" type="xs:string"/>
+	<xs:element name="PEOBSER1NOMCORR1" type="xs:string"/>
+	<xs:element name="PEOBSER1FILLERR1" type="xs:string"/>
+	<xs:element name="PEOBSER2DOMANTR1" type="xs:string"/>
+	<xs:element name="PENUMBLOR1" type="xs:string"/>
+	<xs:element name="PENOMLOCR1" type="xs:string"/>
+	<xs:element name="PENOMCOMR1" type="xs:string"/>
+	<xs:element name="PECODPOSR1" type="xs:string"/>
+	<xs:element name="PERUTCARR1" type="xs:string"/>
+	<xs:element name="PECODPROR1" type="xs:string"/>
+	<xs:element name="PECODPAIR1" type="xs:string"/>
+	<xs:element name="PEMARNORR1" type="xs:string"/>
+	<xs:element name="PEHSTAM1R1" type="xs:string"/>
+	<xs:element name="PESECDOCR1" type="xs:string"/>
+	<xs:element name="PEOBSER2FILLERR1" type="xs:string"/>
+	<xs:element name="ESTPERGLSR1" type="xs:string"/>
+	<xs:element name="CONPERGLSR1" type="xs:string"/>
+	<xs:element name="NOMLOCGLSR1" type="xs:string"/>
+	<xs:element name="NOMCOMGLSR1" type="xs:string"/>
+	<xs:element name="CODPROGLSR1" type="xs:string"/>
+	<xs:element name="CODPAIGLSR1" type="xs:string"/>
+	<xs:element name="PENUMPERMR1" type="xs:string"/>
+	<xs:element name="PESECDOMMR1" type="xs:string"/>
+	<xs:element name="PETIPDOMMR1" type="xs:string"/>
+	<xs:element name="PETIPVIAMR1" type="xs:string"/>
+	<xs:element name="PENOMCALMR1" type="xs:string"/>
+	<xs:element name="PETIPCNTMR1" type="xs:string"/>
+	<xs:element name="PETIPNURMR1" type="xs:string"/>
+	<xs:element name="PEOBSER1RESDIRMR1" type="xs:string"/>
+	<xs:element name="PEOBSER1FDVCORMR1" type="xs:string"/>
+	<xs:element name="PEOBSER1FCORDIMR1" type="xs:string"/>
+	<xs:element name="PEOBSER1NOMCORMR1" type="xs:string"/>
+	<xs:element name="PEOBSER1FILLERMR1" type="xs:string"/>
+	<xs:element name="PEOBSER2DOMANTMR1" type="xs:string"/>
+	<xs:element name="PEOBSER2FILLERMR1" type="xs:string"/>
+	<xs:element name="PESUCCASMR1" type="xs:string"/>
+	<xs:element name="PENUMBLOMR1" type="xs:string"/>
+	<xs:element name="PENOMLOCMR1" type="xs:string"/>
+	<xs:element name="PEDESLOCMR1" type="xs:string"/>
+	<xs:element name="PENOMCOMMR1" type="xs:string"/>
+	<xs:element name="PEDESCMNMR1" type="xs:string"/>
+	<xs:element name="PECODPOSMR1" type="xs:string"/>
+	<xs:element name="PERUTCARMR1" type="xs:string"/>
+	<xs:element name="PECODPROMR1" type="xs:string"/>
+	<xs:element name="PECODPAIMR1" type="xs:string"/>
+	<xs:element name="PETITDOMMR1" type="xs:string"/>
+	<xs:element name="PEFECVERMR1" type="xs:string"/>
+	<xs:element name="PEMARNORMR1" type="xs:string"/>
+	<xs:element name="PEMARDOMMR1" type="xs:string"/>
+	<xs:element name="PEMARCORMR1" type="xs:string"/>
+	<xs:element name="PEMOTDEVMR1" type="xs:string"/>
+	<xs:element name="PEUSUALTMR1" type="xs:string"/>
+	<xs:element name="PEFECALTMR1" type="xs:string"/>
+	<xs:element name="PEUSUMODMR1" type="xs:string"/>
+	<xs:element name="PETERMODMR1" type="xs:string"/>
+	<xs:element name="PESUCMODMR1" type="xs:string"/>
+	<xs:element name="PEHSTAMPMR1" type="xs:string"/>
+	<xs:element name="TIPDOMGLSMR1" type="xs:string"/>
+	<xs:element name="CODPROGLSMR1" type="xs:string"/>
+	<xs:element name="CODPAIGLSMR1" type="xs:string"/>
+	<xs:element name="MOTDEVGLSMR1" type="xs:string"/>
+</xs:schema>

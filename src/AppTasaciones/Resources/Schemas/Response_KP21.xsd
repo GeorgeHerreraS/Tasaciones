@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Response_KP21.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Response_KP21.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="AS_TIB_KP21_Cruce_P_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="INFO"/>
+				<xs:element ref="OUTPUT" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="INFO">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CODERR"/>
+				<xs:element ref="DESERR"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OUTPUT">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="IDRECALL" minOccurs="0"/>
+				<xs:element ref="RESPUESTA" minOccurs="0"/>
+				<xs:element ref="MatrizProductos" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CODERR" type="xs:string"/>
+	<xs:element name="DESERR" type="xs:string"/>
+	<xs:element name="IDRECALL">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ID-RECALL" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ID-RECALL" type="xs:string"/>
+	<xs:element name="RESPUESTA">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="MWPECDGENT" minOccurs="0"/>
+				<xs:element ref="MWPENUMPER" minOccurs="0"/>
+				<xs:element ref="MWPETIPDOC" minOccurs="0"/>
+				<xs:element ref="MWPENUMDOC" minOccurs="0"/>
+				<xs:element ref="MWPESECDOC" minOccurs="0"/>
+				<xs:element ref="MWPEESTREL" minOccurs="0"/>
+				<xs:element ref="MWKPCODCNL" minOccurs="0"/>
+				<xs:element ref="MWKPCODTPOCRU" minOccurs="0"/>
+				<xs:element ref="MWPENOMFAN" minOccurs="0"/>
+				<xs:element ref="MWPEPRIAPE" minOccurs="0"/>
+				<xs:element ref="MWPESEGAPE" minOccurs="0"/>
+				<xs:element ref="MWPENOMPER" minOccurs="0"/>
+				<xs:element ref="MWPETIPPER" minOccurs="0"/>
+				<xs:element ref="MWPEESTPER" minOccurs="0"/>
+				<xs:element ref="MWPECONPER" minOccurs="0"/>
+				<xs:element ref="MWPEACTRIU" minOccurs="0"/>
+				<xs:element ref="MWPEACTRIUGLS" minOccurs="0"/>
+				<xs:element ref="MWPESUBSEG" minOccurs="0"/>
+				<xs:element ref="MWPESUBSEGGLS" minOccurs="0"/>
+				<xs:element ref="MWPENUMPUE" minOccurs="0"/>
+				<xs:element ref="MWPEINDPRO" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MWPECDGENT" type="xs:string"/>
+	<xs:element name="MWPENUMPER" type="xs:string"/>
+	<xs:element name="MWPETIPDOC" type="xs:string"/>
+	<xs:element name="MWPENUMDOC" type="xs:string"/>
+	<xs:element name="MWPESECDOC" type="xs:string"/>
+	<xs:element name="MWPEESTREL" type="xs:string"/>
+	<xs:element name="MWKPCODCNL" type="xs:string"/>
+	<xs:element name="MWKPCODTPOCRU" type="xs:string"/>
+	<xs:element name="MWPENOMFAN" type="xs:string"/>
+	<xs:element name="MWPEPRIAPE" type="xs:string"/>
+	<xs:element name="MWPESEGAPE" type="xs:string"/>
+	<xs:element name="MWPENOMPER" type="xs:string"/>
+	<xs:element name="MWPETIPPER" type="xs:string"/>
+	<xs:element name="MWPEESTPER" type="xs:string"/>
+	<xs:element name="MWPECONPER" type="xs:string"/>
+	<xs:element name="MWPEACTRIU" type="xs:string"/>
+	<xs:element name="MWPEACTRIUGLS" type="xs:string"/>
+	<xs:element name="MWPESUBSEG" type="xs:string"/>
+	<xs:element name="MWPESUBSEGGLS" type="xs:string"/>
+	<xs:element name="MWPENUMPUE" type="xs:string"/>
+	<xs:element name="MWPEINDPRO" type="xs:string"/>
+	<xs:element name="MatrizProductos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="MWPENUMCON" minOccurs="0"/>
+				<xs:element ref="MWPECODOFI" minOccurs="0"/>
+				<xs:element ref="MWKPNUMOPE" minOccurs="0"/>
+				<xs:element ref="MWPECALPAR" minOccurs="0"/>
+				<xs:element ref="MWPECALPARGLS" minOccurs="0"/>
+				<xs:element ref="MWPEORDPAR" minOccurs="0"/>
+				<xs:element ref="MWPECODPRO" minOccurs="0"/>
+				<xs:element ref="MWPECODPROGLS" minOccurs="0"/>
+				<xs:element ref="MWPECODSUB" minOccurs="0"/>
+				<xs:element ref="MWPECODSUBGLS" minOccurs="0"/>
+				<xs:element ref="MWPEFECBRB" minOccurs="0"/>
+				<xs:element ref="MWPESTREL" minOccurs="0"/>
+				<xs:element ref="MWPERESINT" minOccurs="0"/>
+				<xs:element ref="MWPEMOTBAJ" minOccurs="0"/>
+				<xs:element ref="MWPEFECALT" minOccurs="0"/>
+				<xs:element ref="MWPECODMON" minOccurs="0"/>
+				<xs:element ref="MWPEOFIVEN" minOccurs="0"/>
+				<xs:element ref="MWPEFECINI" minOccurs="0"/>
+				<xs:element ref="MWPEFECTER" minOccurs="0"/>
+				<xs:element ref="MWPEESTOPE" minOccurs="0"/>
+				<xs:element ref="MWPEFECEST" minOccurs="0"/>
+				<xs:element ref="MWPEMOTEST" minOccurs="0"/>
+				<xs:element ref="MWPEMOTESTGLS" minOccurs="0"/>
+				<xs:element ref="MWPEAGRCOM" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MWPENUMCON" type="xs:string"/>
+	<xs:element name="MWPECODOFI" type="xs:string"/>
+	<xs:element name="MWKPNUMOPE" type="xs:string"/>
+	<xs:element name="MWPECALPAR" type="xs:string"/>
+	<xs:element name="MWPECALPARGLS" type="xs:string"/>
+	<xs:element name="MWPEORDPAR" type="xs:string"/>
+	<xs:element name="MWPECODPRO" type="xs:string"/>
+	<xs:element name="MWPECODPROGLS" type="xs:string"/>
+	<xs:element name="MWPECODSUB" type="xs:string"/>
+	<xs:element name="MWPECODSUBGLS" type="xs:string"/>
+	<xs:element name="MWPEFECBRB" type="xs:string"/>
+	<xs:element name="MWPESTREL" type="xs:string"/>
+	<xs:element name="MWPERESINT" type="xs:string"/>
+	<xs:element name="MWPEMOTBAJ" type="xs:string"/>
+	<xs:element name="MWPEFECALT" type="xs:string"/>
+	<xs:element name="MWPECODMON" type="xs:string"/>
+	<xs:element name="MWPEOFIVEN" type="xs:string"/>
+	<xs:element name="MWPEFECINI" type="xs:string"/>
+	<xs:element name="MWPEFECTER" type="xs:string"/>
+	<xs:element name="MWPEESTOPE" type="xs:string"/>
+	<xs:element name="MWPEFECEST" type="xs:string"/>
+	<xs:element name="MWPEMOTEST" type="xs:string"/>
+	<xs:element name="MWPEMOTESTGLS" type="xs:string"/>
+	<xs:element name="MWPEAGRCOM" type="xs:string"/>
+</xs:schema>

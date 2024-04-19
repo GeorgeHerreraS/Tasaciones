@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Repository:repository xmlns:Repository="http://www.tibco.com/xmlns/repo/types/2002">
+    <enterpriseArchive>
+        <sharedArchive name="Shared Archive">
+            <resourceType>shared.archive.resource</resourceType>
+            <authorProperty>rmontec</authorProperty>
+            <sharedResources/>
+            <sharedFiles/>
+            <sharedJarFiles/>
+        </sharedArchive>
+        <processArchive name="AppTasaciones">
+            <resourceType>process.archive.resource</resourceType>
+            <authorProperty>Integracion</authorProperty>
+            <processProperty>/Services/wsCL1MDKP21_Cruce_P.serviceagent,/Services/wsCL1CO-KP18-CONOficiales.serviceagent,/Services/wsCL1MDPE62_Cons_Dom.serviceagent</processProperty>
+        </processArchive>
+        <versionProperty>1.0</versionProperty>
+        <authorProperty>Integracion</authorProperty>
+        <addServiceSettableGvars>true</addServiceSettableGvars>
+        <name>AppTasaciones</name>
+        <designer>
+            <lockedProperties/>
+            <fixedChildren/>
+            <resourceDescriptions/>
+        </designer>
+        <fileLocationProperty>C:\Disco_D\Isban\Trabajos\Cachos\Sbustos\TraspasoServiciosOB\AppTasaciones_desa01.ear</fileLocationProperty>
+    </enterpriseArchive>
+</Repository:repository>

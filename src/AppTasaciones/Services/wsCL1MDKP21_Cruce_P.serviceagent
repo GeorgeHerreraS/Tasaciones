@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceResource xmlns:wsdl="http://www.example.com/1475867562148">
+    <ns0:import xmlns:ns0="http://schemas.xmlsoap.org/wsdl/" namespace="http://www.example.com/1475867562148" location="/Services/wsCL1MDKP21_Cruce_P.wsdl"/>
+    <config>
+        <wsdl namespace="http://xmlns.example.com/1475867572450" embedWsdlComponents="true" embedSchemaComponents="true" embedJndiProperties="false"/>
+        <class>com.tibco.bw.service.serviceAgent.ServiceServiceAgent</class>
+        <name>wsCL1MDKP21_Cruce_P</name>
+        <resourceType>service.definition</resourceType>
+        <implType>bw</implType>
+        <groups>
+            <row isDefault="true" groupName="Default"/>
+        </groups>
+        <serviceChange>Thu Jan 12 17:32:07 EST 2017</serviceChange>
+        <interfaceImpl>
+            <tab>
+                <tabName>portType</tabName>
+                <tabType>bw</tabType>
+                <config>
+                    <wsdlDetail location="/Services/wsCL1MDKP21_Cruce_P.wsdl" portType="portType" ns="http://www.example.com/1475867562148"/>
+                    <detail>
+                        <tab>
+                            <tabName>service.definition.impl.tab.label</tabName>
+                            <tabType>impl</tabType>
+                            <config>
+                                <operations>
+                                    <row opName="getKP21_Cruce_P" opImpl="/Services/wsCL1MDKP21_Cruce_P.process"/>
+                                </operations>
+                            </config>
+                        </tab>
+                        <tab>
+                            <tabName>service.definition.ep.tab.label</tabName>
+                            <tabType>ep</tabType>
+                            <config>
+                                <epBindings>
+                                    <row epName="wsCL1MDKP21_Cruce_P" epType="soap">
+                                        <config>
+                                            <epDetail>
+                                                <tab>
+                                                    <tabName>soap.service.transport.ui.transport.tab.label</tabName>
+                                                    <tabType>transport</tabType>
+                                                    <config>
+                                                        <sharedChannel>/Resources/Connections/HTTPConnect.sharedhttp</sharedChannel>
+                                                        <transport>
+                                                            <config>
+                                                                <useBasicAuthentication>false</useBasicAuthentication>
+                                                                <httpURI>/Services/wsCL1MDKP21_Cruce_P</httpURI>
+                                                            </config>
+                                                        </transport>
+                                                    </config>
+                                                </tab>
+                                                <tab>
+                                                    <tabName>soap.service.transport.ui.details.tab.label</tabName>
+                                                    <tabType>details</tabType>
+                                                    <config>
+                                                        <operationStyle>document</operationStyle>
+                                                        <soapVersion>SOAP 1.1</soapVersion>
+                                                        <soap>
+                                                            <operation name="getKP21_Cruce_P">
+                                                                <general>
+                                                                    <config>
+                                                                        <soapAction>/Services/wsCL1MDKP21_Cruce_P/getKP21_Cruce_P</soapAction>
+                                                                        <operationStyle/>
+                                                                        <soapUse>literal</soapUse>
+                                                                        <inputNamespace/>
+                                                                        <outputNamespace/>
+                                                                        <faultNamespace/>
+                                                                        <portAddressPrefix/>
+                                                                    </config>
+                                                                </general>
+                                                            </operation>
+                                                        </soap>
+                                                    </config>
+                                                </tab>
+                                            </epDetail>
+                                        </config>
+                                    </row>
+                                </epBindings>
+                            </config>
+                        </tab>
+                    </detail>
+                </config>
+            </tab>
+        </interfaceImpl>
+    </config>
+</serviceResource>

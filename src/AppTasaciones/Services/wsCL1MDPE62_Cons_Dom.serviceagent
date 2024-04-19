@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceResource xmlns:wsdl="http://www.example.com/1475848239327">
+    <ns0:import xmlns:ns0="http://schemas.xmlsoap.org/wsdl/" namespace="http://www.example.com/1475848239327" location="/Services/wsCL1MDPE62_Cons_Dom.wsdl"/>
+    <config>
+        <wsdl namespace="http://xmlns.example.com/1475848250589" embedWsdlComponents="true" embedSchemaComponents="true" embedJndiProperties="false"/>
+        <class>com.tibco.bw.service.serviceAgent.ServiceServiceAgent</class>
+        <name>wsCL1MDPE62_Cons_Dom</name>
+        <resourceType>service.definition</resourceType>
+        <implType>bw</implType>
+        <groups>
+            <row isDefault="true" groupName="Default"/>
+        </groups>
+        <serviceChange>Thu Jan 12 17:30:10 EST 2017</serviceChange>
+        <interfaceImpl>
+            <tab>
+                <tabName>portType</tabName>
+                <tabType>bw</tabType>
+                <config>
+                    <wsdlDetail location="/Services/wsCL1MDPE62_Cons_Dom.wsdl" portType="portType" ns="http://www.example.com/1475848239327"/>
+                    <detail>
+                        <tab>
+                            <tabName>service.definition.impl.tab.label</tabName>
+                            <tabType>impl</tabType>
+                            <config>
+                                <operations>
+                                    <row opName="getPE62_Cons_Dom" opImpl="/Services/wsCL1MDPE62_Cons_Dom.process"/>
+                                </operations>
+                            </config>
+                        </tab>
+                        <tab>
+                            <tabName>service.definition.ep.tab.label</tabName>
+                            <tabType>ep</tabType>
+                            <config>
+                                <epBindings>
+                                    <row epName="wsCL1MDPE62_Cons_Dom" epType="soap">
+                                        <config>
+                                            <epDetail>
+                                                <tab>
+                                                    <tabName>soap.service.transport.ui.transport.tab.label</tabName>
+                                                    <tabType>transport</tabType>
+                                                    <config>
+                                                        <sharedChannel>/Resources/Connections/HTTPConnect.sharedhttp</sharedChannel>
+                                                        <transport>
+                                                            <config>
+                                                                <useBasicAuthentication>false</useBasicAuthentication>
+                                                                <httpURI>/Services/wsCL1MDPE62_Cons_Dom</httpURI>
+                                                            </config>
+                                                        </transport>
+                                                    </config>
+                                                </tab>
+                                                <tab>
+                                                    <tabName>soap.service.transport.ui.details.tab.label</tabName>
+                                                    <tabType>details</tabType>
+                                                    <config>
+                                                        <operationStyle>document</operationStyle>
+                                                        <soapVersion>SOAP 1.1</soapVersion>
+                                                        <soap>
+                                                            <operation name="getPE62_Cons_Dom">
+                                                                <general>
+                                                                    <config>
+                                                                        <soapAction>/Services/wsCL1MDPE62_Cons_Dom/getPE62_Cons_Dom</soapAction>
+                                                                        <operationStyle/>
+                                                                        <soapUse>literal</soapUse>
+                                                                        <inputNamespace/>
+                                                                        <outputNamespace/>
+                                                                        <faultNamespace/>
+                                                                        <portAddressPrefix/>
+                                                                    </config>
+                                                                </general>
+                                                            </operation>
+                                                        </soap>
+                                                    </config>
+                                                </tab>
+                                            </epDetail>
+                                        </config>
+                                    </row>
+                                </epBindings>
+                            </config>
+                        </tab>
+                    </detail>
+                </config>
+            </tab>
+        </interfaceImpl>
+    </config>
+</serviceResource>

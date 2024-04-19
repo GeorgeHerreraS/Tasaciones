@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns="http://www.tibco.com/pe/DeployedVarsType" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <pd:name>Process/SubProcess/FormatoMTToJson.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType>
+        <xsd:element name="RespuestaMT" type="xsd:string"/>
+    </pd:startType>
+    <pd:startX>133</pd:startX>
+    <pd:startY>77</pd:startY>
+    <pd:returnBindings>
+        <MsgJson>
+            <xsl:value-of select="$JavaCode/javaCodeActivityOutput/Salida"/>
+        </MsgJson>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType>
+        <xsd:element name="MsgJson" type="xsd:string"/>
+    </pd:endType>
+    <pd:endX>447</pd:endX>
+    <pd:endY>77</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1462421105406</pd:targetNamespace>
+    <pd:activity name="JavaCode">
+        <pd:type>com.tibco.plugin.java.JavaActivity</pd:type>
+        <pd:resourceType>ae.javapalette.javaActivity</pd:resourceType>
+        <pd:x>270</pd:x>
+        <pd:y>78</pd:y>
+        <config>
+            <fileName>FormatoMTToJsonJavaCode</fileName>
+            <packageName>Process.SubProcess.FormatoMTToJson</packageName>
+            <fullsource>package Process.SubProcess.FormatoMTToJson;
+import java.util.*;
+import java.io.*;
+public class FormatoMTToJsonJavaCode{
+/****** START SET/GET METHOD, DO NOT MODIFY *****/
+	protected String Texto = "";
+	protected String RegExpresiones = "";
+	protected String ReplaceTxt = "";
+	protected int MaxDesc = 0;
+	protected String NombreCampoDesc = "";
+	protected String Salida = "";
+	public String getTexto() {
+		return Texto;
+	}
+	public void setTexto(String val) {
+		Texto = val;
+	}
+	public String getRegExpresiones() {
+		return RegExpresiones;
+	}
+	public void setRegExpresiones(String val) {
+		RegExpresiones = val;
+	}
+	public String getReplaceTxt() {
+		return ReplaceTxt;
+	}
+	public void setReplaceTxt(String val) {
+		ReplaceTxt = val;
+	}
+	public int getMaxDesc() {
+		return MaxDesc;
+	}
+	public void setMaxDesc(int val) {
+		MaxDesc = val;
+	}
+	public String getNombreCampoDesc() {
+		return NombreCampoDesc;
+	}
+	public void setNombreCampoDesc(String val) {
+		NombreCampoDesc = val;
+	}
+	public String getSalida() {
+		return Salida;
+	}
+	public void setSalida(String val) {
+		Salida = val;
+	}
+/****** END SET/GET METHOD, DO NOT MODIFY *****/
+	public FormatoMTToJsonJavaCode() {
+	}
+	public void invoke() throws Exception {
+/* Available Variables: DO NOT MODIFY
+	In  : String Texto
+	In  : String RegExpresiones
+	In  : String ReplaceTxt
+	In  : int MaxDesc
+	In  : String NombreCampoDesc
+	Out : String Salida
+* Available Variables: DO NOT MODIFY *****/
+	String output, DesErr, outputResto;
+                int porFinDes, posIniDes, posIniRsp;
+
+                output = Texto.replaceAll(RegExpresiones, ReplaceTxt);
+                output = Texto.substring(36, Texto.length());
+
+                porFinDes = output.indexOf("}")+1;
+                posIniDes = output.toUpperCase().indexOf(NombreCampoDesc)+NombreCampoDesc.length()+3;
+
+                if (posIniDes == (NombreCampoDesc.length()+3-1)){
+                               posIniDes = output.toUpperCase().indexOf("DESCRIPCION")+("DESCRIPCION").length()+3;
+                }
+
+                DesErr = output.substring(posIniDes,porFinDes-2);
+                if (DesErr.length() &gt; MaxDesc){
+                               DesErr = DesErr.substring(0, MaxDesc);
+                }
+
+                outputResto = output.substring(porFinDes);
+                posIniRsp = outputResto.indexOf(",")+1;
+                Salida = output.substring(0, posIniDes) + DesErr.trim() + "\"},\"OUTPUT\":{" + outputResto.substring(posIniRsp);
+}
+}
+</fullsource>
+            <outputData>
+                <row>
+                    <fieldName>Salida</fieldName>
+                    <fieldType>string</fieldType>
+                    <fieldRequired>optional</fieldRequired>
+                </row>
+            </outputData>
+            <inputData>
+                <row>
+                    <fieldName>Texto</fieldName>
+                    <fieldType>string</fieldType>
+                    <fieldRequired>optional</fieldRequired>
+                </row>
+                <row>
+                    <fieldName>RegExpresiones</fieldName>
+                    <fieldType>string</fieldType>
+                    <fieldRequired>optional</fieldRequired>
+                </row>
+                <row>
+                    <fieldName>ReplaceTxt</fieldName>
+                    <fieldType>string</fieldType>
+                    <fieldRequired>optional</fieldRequired>
+                </row>
+                <row>
+                    <fieldName>MaxDesc</fieldName>
+                    <fieldType>int</fieldType>
+                    <fieldRequired>optional</fieldRequired>
+                </row>
+                <row>
+                    <fieldName>NombreCampoDesc</fieldName>
+                    <fieldType>string</fieldType>
+                    <fieldRequired>optional</fieldRequired>
+                </row>
+            </inputData>
+            <byteCode>
+                <class>
+                    <name>FormatoMTToJsonJavaCode</name>
+                    <byteCode>yv66vgAAADMAZgkAGAA+CQAYAD8JABgAQAkAGABBCQAYAEIJABgAQwoAGQBECABFCgBGAEcKAEYASAoARgBJCABKCgBGAEsKAEYATAgATQoARgBOCABPBwBQCgASAEQKABIAUQoARgBSCABTCgASAFQHAFUHAFYBAAVUZXh0bwEAEkxqYXZhL2xhbmcvU3RyaW5nOwEADlJlZ0V4cHJlc2lvbmVzAQAKUmVwbGFjZVR4dAEAB01heERlc2MBAAFJAQAPTm9tYnJlQ2FtcG9EZXNjAQAGU2FsaWRhAQAIZ2V0VGV4dG8BABQoKUxqYXZhL2xhbmcvU3RyaW5nOwEABENvZGUBAA9MaW5lTnVtYmVyVGFibGUBAAhzZXRUZXh0bwEAFShMamF2YS9sYW5nL1N0cmluZzspVgEAEWdldFJlZ0V4cHJlc2lvbmVzAQARc2V0UmVnRXhwcmVzaW9uZXMBAA1nZXRSZXBsYWNlVHh0AQANc2V0UmVwbGFjZVR4dAEACmdldE1heERlc2MBAAMoKUkBAApzZXRNYXhEZXNjAQAEKEkpVgEAEmdldE5vbWJyZUNhbXBvRGVzYwEAEnNldE5vbWJyZUNhbXBvRGVzYwEACWdldFNhbGlkYQEACXNldFNhbGlkYQEABjxpbml0PgEAAygpVgEABmludm9rZQEADVN0YWNrTWFwVGFibGUHAFUHAFcBAApFeGNlcHRpb25zBwBYAQAKU291cmNlRmlsZQEAHEZvcm1hdG9NVFRvSnNvbkphdmFDb2RlLmphdmEMABoAGwwAHAAbDAAdABsMAB4AHwwAIAAbDAAhABsMADQANQEAAAcAVwwAWQBaDABbAC0MAFwAXQEAAX0MAF4AXwwAYAAjAQALREVTQ1JJUENJT04MAFwAYQEAASwBABdqYXZhL2xhbmcvU3RyaW5nQnVpbGRlcgwAYgBjDABkACMBAA0ifSwiT1VUUFVUIjp7DABlACMBADpQcm9jZXNzL1N1YlByb2Nlc3MvRm9ybWF0b01UVG9Kc29uL0Zvcm1hdG9NVFRvSnNvbkphdmFDb2RlAQAQamF2YS9sYW5nL09iamVjdAEAEGphdmEvbGFuZy9TdHJpbmcBABNqYXZhL2xhbmcvRXhjZXB0aW9uAQAKcmVwbGFjZUFsbAEAOChMamF2YS9sYW5nL1N0cmluZztMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9TdHJpbmc7AQAGbGVuZ3RoAQAJc3Vic3RyaW5nAQAWKElJKUxqYXZhL2xhbmcvU3RyaW5nOwEAB2luZGV4T2YBABUoTGphdmEvbGFuZy9TdHJpbmc7KUkBAAt0b1VwcGVyQ2FzZQEAFShJKUxqYXZhL2xhbmcvU3RyaW5nOwEABmFwcGVuZAEALShMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9TdHJpbmdCdWlsZGVyOwEABHRyaW0BAAh0b1N0cmluZwAhABgAGQAAAAYABAAaABsAAAAEABwAGwAAAAQAHQAbAAAABAAeAB8AAAAEACAAGwAAAAQAIQAbAAAADgABACIAIwABACQAAAAdAAEAAQAAAAUqtAABsAAAAAEAJQAAAAYAAQAAAA0AAQAmACcAAQAkAAAAIgACAAIAAAAGKiu1AAGxAAAAAQAlAAAACgACAAAAEAAFABEAAQAoACMAAQAkAAAAHQABAAEAAAAFKrQAArAAAAABACUAAAAGAAEAAAATAAEAKQAnAAEAJAAAACIAAgACAAAABiortQACsQAAAAEAJQAAAAoAAgAAABYABQAXAAEAKgAjAAEAJAAAAB0AAQABAAAABSq0AAOwAAAAAQAlAAAABgABAAAAGQABACsAJwABACQAAAAiAAIAAgAAAAYqK7UAA7EAAAABACUAAAAKAAIAAAAcAAUAHQABACwALQABACQAAAAdAAEAAQAAAAUqtAAErAAAAAEAJQAAAAYAAQAAAB8AAQAuAC8AAQAkAAAAIgACAAIAAAAGKhu1AASxAAAAAQAlAAAACgACAAAAIgAFACMAAQAwACMAAQAkAAAAHQABAAEAAAAFKrQABbAAAAABACUAAAAGAAEAAAAlAAEAMQAnAAEAJAAAACIAAgACAAAABiortQAFsQAAAAEAJQAAAAoAAgAAACgABQApAAEAMgAjAAEAJAAAAB0AAQABAAAABSq0AAawAAAAAQAlAAAABgABAAAAKwABADMAJwABACQAAAAiAAIAAgAAAAYqK7UABrEAAAABACUAAAAKAAIAAAAuAAUALwABADQANQABACQAAABcAAIAAQAAACgqtwAHKhIItQABKhIItQACKhIItQADKgO1AAQqEgi1AAUqEgi1AAaxAAAAAQAlAAAAIgAIAAAAMQAEAAYACgAHABAACAAWAAkAGwAKACEACwAnADIAAQA2ADUAAgAkAAABOAAFAAcAAADEKrQAASq0AAIqtAADtgAJTCq0AAEQJCq0AAG2AAq2AAtMKxIMtgANBGA2BCu2AA4qtAAFtgANKrQABbYACmAGYDYFFQUqtAAFtgAKBmAEZKAAFiu2AA4SD7YADRIPtgAKYAZgNgUrFQUVBAVktgALTSy2AAoqtAAEpAANLAMqtAAEtgALTSsVBLYAEE4tEhG2AA0EYDYGKrsAElm3ABMrAxUFtgALtgAULLYAFbYAFBIWtgAULRUGtgAQtgAUtgAXtQAGsQAAAAIAJQAAADYADQAAAD8AEABAACEAQgArAEMAQgBFAFIARgBlAEkAcABKAHsASwCFAE4AjABPAJYAUADDAFEANwAAACYAAv8AZQAGBwA4BwA5AAABAQAA/wAfAAYHADgHADkHADkAAQEAAAA6AAAABAABADsAAQA8AAAAAgA9</byteCode>
+                </class>
+            </byteCode>
+        </config>
+        <pd:inputBindings>
+            <javaCodeActivityInput>
+                <Texto>
+                    <xsl:value-of select="$Start/RespuestaMT"/>
+                </Texto>
+                <RegExpresiones>
+                    <xsl:value-of select="$_globalVariables/ns:GlobalVariables/Jms/mqRegEx"/>
+                </RegExpresiones>
+                <ReplaceTxt>
+                    <xsl:value-of select="&quot;*&quot;"/>
+                </ReplaceTxt>
+                <MaxDesc>
+                    <xsl:value-of select="$_globalVariables/ns:GlobalVariables/Componente/LargoDesc"/>
+                </MaxDesc>
+                <NombreCampoDesc>
+                    <xsl:value-of select="$_globalVariables/ns:GlobalVariables/Componente/CampoDesc"/>
+                </NombreCampoDesc>
+            </javaCodeActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>JavaCode</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>JavaCode</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

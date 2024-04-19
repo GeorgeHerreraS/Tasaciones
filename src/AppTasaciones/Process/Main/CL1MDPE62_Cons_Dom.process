@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pfx6="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Response_PE62.xsd" xmlns:pfx="http://www.tibco.com/schemas/WsBoletaGarantia/Schemas/Request_B442.xsd" xmlns:pfx2="http://www.tibco.com/schemas/WsBoletaGarantia/Schemas/Response_B442.xsd" xmlns:ns="http://www.tibco.com/namespaces/tnt/plugins/jms" xmlns:pfx3="http://www.tibco.com/schemas/WsBoletaGarantia/Schemas/Request_KT65.xsd" xmlns:pfx4="http://www.tibco.com/schemas/WsBoletaGarantia/Schemas/Response_KT65.xsd" xmlns:pfx5="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Request_PE62.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns1="http://www.tibco.com/pe/DeployedVarsType" xmlns:ns4="http://www.tibco.com/pe/EngineTypes" xmlns:ns3="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pd="http://xmlns.tibco.com/bw/process/2003">
+    <xsd:import namespace="http://www.tibco.com/schemas/WsBoletaGarantia/Schemas/Request_KT65.xsd" schemaLocation="/Schemas/Request_KT65.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/WsBoletaGarantia/Schemas/Response_KT65.xsd" schemaLocation="/Schemas/Response_KT65.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Request_PE62.xsd" schemaLocation="/Resources/Schemas/Request_PE62.xsd"/>
+    <xsd:import namespace="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Response_PE62.xsd" schemaLocation="/Resources/Schemas/Response_PE62.xsd"/>
+    <pd:name>Process/Main/CL1MDPE62_Cons_Dom.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx5:INPUT"/>
+    <pd:startX>36</pd:startX>
+    <pd:startY>63</pd:startY>
+    <pd:returnBindings>
+        <xsl:choose>
+            <xsl:when test="not(exists($_error/ns4:ErrorReport/MsgCode))">
+                <xsl:copy-of select="$RespJson/ns2:ActivityOutputClass/pfx6:AS_TIB_PE62_Cons_Dom_Response"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <pfx6:AS_TIB_PE62_Cons_Dom_Response>
+                    <pfx6:INFO>
+                        <pfx6:CODERR>
+                            <xsl:value-of select="'16'"/>
+                        </pfx6:CODERR>
+                        <pfx6:DESERR>
+                            <xsl:value-of select="$_error/ns4:ErrorReport/Msg"/>
+                        </pfx6:DESERR>
+                    </pfx6:INFO>
+                </pfx6:AS_TIB_PE62_Cons_Dom_Response>
+            </xsl:otherwise>
+        </xsl:choose>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx6:AS_TIB_PE62_Cons_Dom_Response"/>
+    <pd:endX>976</pd:endX>
+    <pd:endY>63</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1461282906734</pd:targetNamespace>
+    <pd:activity name="Catch">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>474</pd:x>
+        <pd:y>192</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <fault>localname=JSONRenderException namespace=http://schemas.tibco.com/bw/plugins/xml/5.0/RESTJSONExceptions</fault>
+            <catchAll>true</catchAll>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="FormatoJsonToMT">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>247</pd:x>
+        <pd:y>63</pd:y>
+        <config>
+            <processName>/Process/SubProcess/FormatoJsonToMT.process</processName>
+        </config>
+        <pd:inputBindings>
+            <Entrada>
+                <MgsJson>
+                    <xsl:value-of select="$Render-JSON/ns2:ActivityOutputClass/jsonString"/>
+                </MgsJson>
+            </Entrada>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="FormatoMTToJson">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>707</pd:x>
+        <pd:y>63</pd:y>
+        <config>
+            <processName>/Process/SubProcess/FormatoMTToJson.process</processName>
+        </config>
+        <pd:inputBindings>
+            <RespuestaMT>
+                <xsl:value-of select="$RequestReplyMQ/RespuestaMT"/>
+            </RespuestaMT>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Log">
+        <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
+        <pd:resourceType>ae.activities.log</pd:resourceType>
+        <pd:x>336</pd:x>
+        <pd:y>63</pd:y>
+        <config>
+            <role>User</role>
+        </config>
+        <pd:inputBindings>
+            <ns3:ActivityInput>
+                <message>
+                    <xsl:value-of select="concat(&quot;Envio JSON: &quot;,$FormatoJsonToMT/msgJsonMt)"/>
+                </message>
+            </ns3:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Log-1">
+        <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
+        <pd:resourceType>ae.activities.log</pd:resourceType>
+        <pd:x>606</pd:x>
+        <pd:y>63</pd:y>
+        <config>
+            <role>User</role>
+        </config>
+        <pd:inputBindings>
+            <ns3:ActivityInput>
+                <message>
+                    <xsl:value-of select="concat(&quot;Respuesta JSON: &quot;,$RequestReplyMQ/RespuestaMT)"/>
+                </message>
+            </ns3:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Log-2">
+        <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
+        <pd:resourceType>ae.activities.log</pd:resourceType>
+        <pd:x>816</pd:x>
+        <pd:y>63</pd:y>
+        <config>
+            <role>User</role>
+        </config>
+        <pd:inputBindings>
+            <ns3:ActivityInput>
+                <message>
+                    <xsl:value-of select="concat(&quot;Respuesta JSON To Xml Parser: &quot;,$FormatoMTToJson/MsgJson)"/>
+                </message>
+            </ns3:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="LogError">
+        <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
+        <pd:resourceType>ae.activities.log</pd:resourceType>
+        <pd:x>778</pd:x>
+        <pd:y>192</pd:y>
+        <config>
+            <role>User</role>
+        </config>
+        <pd:inputBindings>
+            <ns3:ActivityInput>
+                <message>
+                    <xsl:value-of select="$_error/ns4:ErrorReport/StackTrace"/>
+                </message>
+                <msgCode>
+                    <xsl:value-of select="$_error/ns4:ErrorReport/MsgCode"/>
+                </msgCode>
+            </ns3:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Render JSON">
+        <pd:type>com.tibco.plugin.json.activities.JSONRenderActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONRenderActivity</pd:resourceType>
+        <pd:x>140</pd:x>
+        <pd:y>63</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <ActivityInputEditor ref="pfx5:INPUT"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInputClass>
+                <xsl:copy-of select="$Start/pfx5:INPUT"/>
+            </ns2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="RespJson">
+        <pd:type>com.tibco.plugin.json.activities.JSONParserActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONParserActivity</pd:resourceType>
+        <pd:x>911</pd:x>
+        <pd:y>63</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <ValidateOutputEnable>true</ValidateOutputEnable>
+            <ActivityOutputEditor ref="pfx6:AS_TIB_PE62_Cons_Dom_Response"/>
+        </config>
+        <pd:inputBindings>
+            <ns2:ActivityInputClass>
+                <jsonString>
+                    <xsl:value-of select="$FormatoMTToJson/MsgJson"/>
+                </jsonString>
+            </ns2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="RequestReplyMQ">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>454</pd:x>
+        <pd:y>62</pd:y>
+        <config>
+            <processName>/Process/SubProcess/RequestReplyMQ.process</processName>
+        </config>
+        <pd:inputBindings>
+            <Entrada>
+                <EntradaMT>
+                    <xsl:value-of select="$FormatoJsonToMT/msgJsonMt"/>
+                </EntradaMT>
+                <Componente>
+                    <xsl:value-of select="&quot;AS_TIB_PE62_Cons_Dom&quot;"/>
+                </Componente>
+            </Entrada>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>RespJson</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Log-2</pd:from>
+        <pd:to>RespJson</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Render JSON</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Render JSON</pd:from>
+        <pd:to>FormatoJsonToMT</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>FormatoJsonToMT</pd:from>
+        <pd:to>Log</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Log-1</pd:from>
+        <pd:to>FormatoMTToJson</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>FormatoMTToJson</pd:from>
+        <pd:to>Log-2</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Catch</pd:from>
+        <pd:to>LogError</pd:to>
+        <pd:xpathDescription>Error</pd:xpathDescription>
+        <pd:lineType>One Bend</pd:lineType>
+        <pd:lineColor>-52429</pd:lineColor>
+        <pd:conditionType>error</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>LogError</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>One Bend</pd:lineType>
+        <pd:lineColor>-52429</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Log</pd:from>
+        <pd:to>RequestReplyMQ</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>RequestReplyMQ</pd:from>
+        <pd:to>Log-1</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/pe/DeployedVarsType" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns1="http://www.tibco.com/pe/EngineTypes" xmlns:ns4="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/INFO.xsd" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:pfx3="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/KP18.xsd" xmlns:pfx2="http://www.tibco.com/namespaces/tnt/plugins/json" xmlns:pfx="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:pfx6="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/soap_fault.xsd">
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/soap_fault.xsd" schemaLocation="/Resources/Schemas/soap_fault.xsd"/>
+    <xs:import xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/KP18.xsd" schemaLocation="/Resources/Schemas/KP18.xsd"/>
+    <pd:name>Process/Atomicos/CL1MDKP18-CONOficiales.process</pd:name>
+    <pd:description/>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx3:INPUT"/>
+    <pd:startX>33</pd:startX>
+    <pd:startY>54</pd:startY>
+    <pd:returnBindings>
+        <xsl:copy-of select="$contexto/pfx3:TIB_KP18_CONOficiales_Response"/>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType ref="pfx3:TIB_KP18_CONOficiales_Response"/>
+    <pd:endX>622</pd:endX>
+    <pd:endY>334</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables>
+        <contexto ref="pfx3:TIB_KP18_CONOficiales_Response"/>
+    </pd:processVariables>
+    <pd:targetNamespace>http://itg.isban.cl/AppOfficeBanking/Process/CL1MDKP18-CONOficiales</pd:targetNamespace>
+    <pd:activity name="Catch">
+        <pd:type>com.tibco.pe.core.CatchActivity</pd:type>
+        <pd:resourceType>ae.activities.catch</pd:resourceType>
+        <pd:x>145</pd:x>
+        <pd:y>340</pd:y>
+        <pd:handler>true</pd:handler>
+        <config>
+            <fault>localname=JSONRenderException namespace=http://schemas.tibco.com/bw/plugins/xml/5.0/RESTJSONExceptions</fault>
+            <catchAll>true</catchAll>
+        </config>
+        <pd:inputBindings/>
+    </pd:activity>
+    <pd:activity name="FormatoJsonToMT">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>276</pd:x>
+        <pd:y>59</pd:y>
+        <config>
+            <processName>/Process/SubProcess/FormatoJsonToMT.process</processName>
+        </config>
+        <pd:inputBindings>
+            <Entrada>
+                <MgsJson>
+                    <xsl:value-of select="$Render-JSON/pfx2:ActivityOutputClass/jsonString"/>
+                </MgsJson>
+            </Entrada>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="FormatoMTToJson">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>591</pd:x>
+        <pd:y>61</pd:y>
+        <config>
+            <processName>/Process/SubProcess/FormatoMTToJson.process</processName>
+        </config>
+        <pd:inputBindings>
+            <RespuestaMT>
+                <xsl:value-of select="$RequestReplyMQ/RespuestaMT"/>
+            </RespuestaMT>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Log">
+        <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
+        <pd:resourceType>ae.activities.log</pd:resourceType>
+        <pd:x>281</pd:x>
+        <pd:y>170</pd:y>
+        <config>
+            <role>User</role>
+        </config>
+        <pd:inputBindings>
+            <pfx:ActivityInput>
+                <message>
+                    <xsl:value-of select="concat(&quot;Envio JSON: &quot;,$FormatoJsonToMT/msgJsonMt)"/>
+                </message>
+            </pfx:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Log-1">
+        <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
+        <pd:resourceType>ae.activities.log</pd:resourceType>
+        <pd:x>433</pd:x>
+        <pd:y>167</pd:y>
+        <config>
+            <role>User</role>
+        </config>
+        <pd:inputBindings>
+            <pfx:ActivityInput>
+                <message>
+                    <xsl:value-of select="concat(&quot;Respuesta JSON: &quot;,$RequestReplyMQ/RespuestaMT)"/>
+                </message>
+            </pfx:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Log-2">
+        <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
+        <pd:resourceType>ae.activities.log</pd:resourceType>
+        <pd:x>931</pd:x>
+        <pd:y>63</pd:y>
+        <config>
+            <role>User</role>
+        </config>
+        <pd:inputBindings>
+            <pfx:ActivityInput>
+                <message>
+                    <xsl:value-of select="concat(&quot;Respuesta JSON To Xml Parser: &quot;,$FormatoMTToJson/MsgJson)"/>
+                </message>
+            </pfx:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="LogError">
+        <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
+        <pd:resourceType>ae.activities.log</pd:resourceType>
+        <pd:x>330</pd:x>
+        <pd:y>336</pd:y>
+        <config>
+            <role>User</role>
+        </config>
+        <pd:inputBindings>
+            <pfx:ActivityInput>
+                <message>
+                    <xsl:value-of select="$_error/ns1:ErrorReport/StackTrace"/>
+                </message>
+                <msgCode>
+                    <xsl:value-of select="$_error/ns1:ErrorReport/MsgCode"/>
+                </msgCode>
+            </pfx:ActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="Render JSON">
+        <pd:type>com.tibco.plugin.json.activities.JSONRenderActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONRenderActivity</pd:resourceType>
+        <pd:x>149</pd:x>
+        <pd:y>58</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <ActivityInputEditor ref="pfx3:INPUT"/>
+        </config>
+        <pd:inputBindings>
+            <pfx2:ActivityInputClass>
+                <xsl:copy-of select="$Start/pfx3:INPUT"/>
+            </pfx2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="RequestReplyMQ">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>431</pd:x>
+        <pd:y>60</pd:y>
+        <config>
+            <processName>/Process/SubProcess/RequestReplyMQ.process</processName>
+        </config>
+        <pd:inputBindings>
+            <Entrada>
+                <EntradaMT>
+                    <xsl:value-of select="$FormatoJsonToMT/msgJsonMt"/>
+                </EntradaMT>
+                <Componente>
+                    <xsl:value-of select="&quot;TIB_KP18_CONOficiales&quot;"/>
+                </Componente>
+            </Entrada>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="RespJsonOK">
+        <pd:type>com.tibco.plugin.json.activities.JSONParserActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONParserActivity</pd:resourceType>
+        <pd:x>930</pd:x>
+        <pd:y>331</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <ValidateOutputEnable>false</ValidateOutputEnable>
+            <ActivityOutputEditor ref="pfx3:TIB_KP18_CONOficiales_Response"/>
+        </config>
+        <pd:inputBindings>
+            <pfx2:ActivityInputClass>
+                <jsonString>
+                    <xsl:value-of select="$FormatoMTToJson/MsgJson"/>
+                </jsonString>
+            </pfx2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="RespJsonNOK">
+        <pd:type>com.tibco.plugin.json.activities.JSONParserActivity</pd:type>
+        <pd:resourceType>ae.activities.JSONParserActivity</pd:resourceType>
+        <pd:x>789</pd:x>
+        <pd:y>128</pd:y>
+        <config>
+            <SchemaType>xsdType</SchemaType>
+            <BadgerfishCheck>false</BadgerfishCheck>
+            <ActivityOutputEditor ref="pfx6:TIB_KP18_CONOficiales_Response"/>
+        </config>
+        <pd:inputBindings>
+            <pfx2:ActivityInputClass>
+                <jsonString>
+                    <xsl:value-of select="$FormatoMTToJson/MsgJson"/>
+                </jsonString>
+            </pfx2:ActivityInputClass>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="AssignTimeOut">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>619</pd:x>
+        <pd:y>167</pd:y>
+        <config>
+            <variableName>contexto</variableName>
+        </config>
+        <pd:inputBindings>
+            <pfx3:TIB_KP18_CONOficiales_Response>
+                <ns4:INFO>
+                    <ns4:CODERR>
+                        <xsl:value-of select="$_globalVariables/ns2:GlobalVariables/INFO/CodErr"/>
+                    </ns4:CODERR>
+                    <ns4:DESERR>
+                        <xsl:value-of select="&quot;No se obtuvo respuesta de MT&quot;"/>
+                    </ns4:DESERR>
+                </ns4:INFO>
+            </pfx3:TIB_KP18_CONOficiales_Response>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="AssignErrorMT">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>793</pd:x>
+        <pd:y>234</pd:y>
+        <config>
+            <variableName>contexto</variableName>
+        </config>
+        <pd:inputBindings>
+            <pfx3:TIB_KP18_CONOficiales_Response>
+                <ns4:INFO>
+                    <ns4:CODERR>
+                        <xsl:value-of select="$_globalVariables/ns2:GlobalVariables/INFO/CodErr"/>
+                    </ns4:CODERR>
+                    <ns4:DESERR>
+                        <xsl:value-of select="$RespJsonNOK/pfx2:ActivityOutputClass/pfx6:TIB_KP18_CONOficiales_Response/pfx6:soap_fault/pfx6:soap_string"/>
+                    </ns4:DESERR>
+                </ns4:INFO>
+            </pfx3:TIB_KP18_CONOficiales_Response>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="AssignOk">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>762</pd:x>
+        <pd:y>334</pd:y>
+        <config>
+            <variableName>contexto</variableName>
+        </config>
+        <pd:inputBindings>
+            <xsl:copy-of select="$RespJsonOK/pfx2:ActivityOutputClass/pfx3:TIB_KP18_CONOficiales_Response"/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="AssignCatch">
+        <pd:type>com.tibco.pe.core.AssignActivity</pd:type>
+        <pd:resourceType>ae.activities.assignActivity</pd:resourceType>
+        <pd:x>468</pd:x>
+        <pd:y>338</pd:y>
+        <config>
+            <variableName>contexto</variableName>
+        </config>
+        <pd:inputBindings>
+            <pfx3:TIB_KP18_CONOficiales_Response>
+                <ns4:INFO>
+                    <ns4:CODERR>
+                        <xsl:value-of select="$_globalVariables/ns2:GlobalVariables/INFO/CodErr"/>
+                    </ns4:CODERR>
+                    <ns4:DESERR>
+                        <xsl:value-of select="$_error/ns1:ErrorReport/Msg"/>
+                    </ns4:DESERR>
+                </ns4:INFO>
+            </pfx3:TIB_KP18_CONOficiales_Response>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>RespJsonOK</pd:from>
+        <pd:to>AssignOk</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Render JSON</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Render JSON</pd:from>
+        <pd:to>FormatoJsonToMT</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>FormatoJsonToMT</pd:from>
+        <pd:to>Log</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Log</pd:from>
+        <pd:to>RequestReplyMQ</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Log-1</pd:from>
+        <pd:to>FormatoMTToJson</pd:to>
+        <pd:xpathDescription>Respuesta MT</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>string-length($RequestReplyMQ/RespuestaMT)&gt;0</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>FormatoMTToJson</pd:from>
+        <pd:to>Log-2</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Catch</pd:from>
+        <pd:to>LogError</pd:to>
+        <pd:xpathDescription>Error</pd:xpathDescription>
+        <pd:lineType>One Bend</pd:lineType>
+        <pd:lineColor>-52429</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>LogError</pd:from>
+        <pd:to>AssignCatch</pd:to>
+        <pd:lineType>One Bend</pd:lineType>
+        <pd:lineColor>-52429</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>RequestReplyMQ</pd:from>
+        <pd:to>Log-1</pd:to>
+        <pd:xpathDescription/>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Log-2</pd:from>
+        <pd:to>RespJsonOK</pd:to>
+        <pd:xpathDescription>Ok</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>xpath</pd:conditionType>
+        <pd:xpath>tib:index-of($FormatoMTToJson/MsgJson, "soap_fault")=-1</pd:xpath>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>RespJsonNOK</pd:from>
+        <pd:to>AssignErrorMT</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Log-1</pd:from>
+        <pd:to>AssignTimeOut</pd:to>
+        <pd:xpathDescription>No se obtuvo respuesta de MT</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Log-2</pd:from>
+        <pd:to>RespJsonNOK</pd:to>
+        <pd:xpathDescription>Error</pd:xpathDescription>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>otherwise</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>AssignTimeOut</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>AssignErrorMT</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>AssignOk</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>AssignCatch</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-65536</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

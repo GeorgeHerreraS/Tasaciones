@@ -1,0 +1,45 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<repository xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://www.tibco.com/xmlns/repo/types/2002">
+	<globalVariables>
+		<globalVariable>
+			<name>CodAv</name>
+			<value>04</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1493357233868</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>CodErr</name>
+			<value>16</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1485203690846</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>CodOk</name>
+			<value>00</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1485203690846</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>MsjErr</name>
+			<value>La operacion no se puede realizar</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1507045840667</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>MsjOk</name>
+			<value>Operacion exitosa</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1485203690846</modTime>
+		</globalVariable>
+	</globalVariables>
+</repository>

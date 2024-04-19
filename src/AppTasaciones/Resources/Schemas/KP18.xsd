@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/KP18.xsd"
+	 xmlns:ns0="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/INFO.xsd"
+	 targetNamespace="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/KP18.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/INFO.xsd" schemaLocation="INFO.xsd"/>
+	<xs:element name="INPUT">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="USUARIO-ALT" type="xs:string"/>
+				<xs:element name="TERMINAL-ALT" type="xs:string"/>
+				<xs:element name="CANAL-ID" type="xs:string"/>
+				<xs:element name="FILLER" type="xs:string"/>
+				<xs:element name="SEGLLA" type="xs:string"/>
+				<xs:element name="OPCION" type="xs:string"/>
+				<xs:element name="PENUMPU" type="xs:string"/>
+				<xs:element name="PENUMPE" type="xs:string"/>
+				<xs:element name="TIPDOC" type="xs:string"/>
+				<xs:element name="PENUMDO" type="xs:string"/>
+				<xs:element name="SECDOC" type="xs:string"/>
+				<xs:element name="PETIOFI" type="xs:string"/>
+				<xs:element name="PENOMFA" type="xs:string"/>
+				<xs:element name="PEPRIAP" type="xs:string"/>
+				<xs:element name="PESEGAP" type="xs:string"/>
+				<xs:element name="PENOMPE" type="xs:string"/>
+				<xs:element name="PEFECNA" type="xs:string"/>
+				<xs:element name="PETIPPE" type="xs:string"/>
+				<xs:element name="PEESTPE" type="xs:string"/>
+				<xs:element name="PECONPE" type="xs:string"/>
+				<xs:element name="PENIVAC" type="xs:string"/>
+				<xs:element name="PEINDRE" type="xs:string"/>
+				<xs:element name="PEINDCO" type="xs:string"/>
+				<xs:element name="PEINDGR" type="xs:string"/>
+				<xs:element name="PEINDAV" type="xs:string"/>
+				<xs:element name="PEINDN1" type="xs:string"/>
+				<xs:element name="PEINDN2" type="xs:string"/>
+				<xs:element name="PEINDN3" type="xs:string"/>
+				<xs:element name="PEINDN4" type="xs:string"/>
+				<xs:element name="PEINDN5" type="xs:string"/>
+				<xs:element name="PETIPVI" type="xs:string"/>
+				<xs:element name="PENOMCA" type="xs:string"/>
+				<xs:element name="PEOBSE1" type="xs:string"/>
+				<xs:element name="PEOBSE2" type="xs:string"/>
+				<xs:element name="PENUMBL" type="xs:string"/>
+				<xs:element name="PENOMLO" type="xs:string"/>
+				<xs:element name="PENOMCO" type="xs:string"/>
+				<xs:element name="PECODPO" type="xs:string"/>
+				<xs:element name="PERUTCA" type="xs:string"/>
+				<xs:element name="CODPRV" type="xs:string"/>
+				<xs:element name="PECODPA" type="xs:string"/>
+				<xs:element name="PEMARNO" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_KP18_CONOficiales_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ns0:INFO"/>
+				<xs:element name="OUTPUT" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ESCALARES" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="SEGLLA" type="xs:string" minOccurs="0"/>
+										<xs:element name="OPCION" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENUMPU" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENUMPE" type="xs:string" minOccurs="0"/>
+										<xs:element name="TIPDOC" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENUMDO" type="xs:string" minOccurs="0"/>
+										<xs:element name="SECDOC" type="xs:string" minOccurs="0"/>
+										<xs:element name="PETIOFI" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENOMFA" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEPRIAP" type="xs:string" minOccurs="0"/>
+										<xs:element name="PESEGAP" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENOMPE" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEFECNA" type="xs:string" minOccurs="0"/>
+										<xs:element name="PETIPPE" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEESTPE" type="xs:string" minOccurs="0"/>
+										<xs:element name="PECONPE" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENIVAC" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEINDRE" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEINDCO" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEINDGR" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEINDAV" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEINDN1" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEINDN2" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEINDN3" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEINDN4" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEINDN5" type="xs:string" minOccurs="0"/>
+										<xs:element name="PETIPVI" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENOMCA" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEOBSE1" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEOBSE2" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENUMBL" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENOMLO" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENOMCO" type="xs:string" minOccurs="0"/>
+										<xs:element name="PECODPO" type="xs:string" minOccurs="0"/>
+										<xs:element name="PERUTCA" type="xs:string" minOccurs="0"/>
+										<xs:element name="CODPRV" type="xs:string" minOccurs="0"/>
+										<xs:element name="PECODPA" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEMARNO" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSTIPDOC" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSTIPOFI" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSESTPER" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSCONPER" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSTIPVIA" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSNOMLOC" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSNOMCOM" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSNOMPRO" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSNOMPAI" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="MATRIZ" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PENUMPU" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENUMPE" type="xs:string" minOccurs="0"/>
+										<xs:element name="PETIPOF" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEUSERI" type="xs:string" minOccurs="0"/>
+										<xs:element name="PETIPBA" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEREGOF" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEZONOF" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENUMSU" type="xs:string" minOccurs="0"/>
+										<xs:element name="PECENCO" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENUMPT" type="xs:string" minOccurs="0"/>
+										<xs:element name="PENIVRE" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEESTAC" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEESTAN" type="xs:string" minOccurs="0"/>
+										<xs:element name="FECEST" type="xs:string" minOccurs="0"/>
+										<xs:element name="PERANOF" type="xs:string" minOccurs="0"/>
+										<xs:element name="PESEGOF" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEUSUAL" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEFECAL" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEUSUMO" type="xs:string" minOccurs="0"/>
+										<xs:element name="PETERMO" type="xs:string" minOccurs="0"/>
+										<xs:element name="PESUCMO" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEHSTAM" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEOBSE1" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEOBSE2" type="xs:string" minOccurs="0"/>
+										<xs:element name="PEINDRE" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSTPOF" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSTPBC" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSRGOF" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSZNOF" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSNSUC" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSCCAS" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSNVRS" type="xs:string" minOccurs="0"/>
+										<xs:element name="GLSSGOF" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

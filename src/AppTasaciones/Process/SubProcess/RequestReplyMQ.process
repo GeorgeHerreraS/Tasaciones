@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/jms" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns1="http://www.tibco.com/pe/EngineTypes" xmlns:ns="http://www.tibco.com/pe/DeployedVarsType" xmlns:ns4="www.tibco.com/plugin/java/JavaMethodActivityInput" xmlns:ns3="http://www.tibco.com/pe/GenerateErrorActivity/InputSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns5="www.tibco.com/plugin/java/JavaMethodActivityOutput">
+    <pd:name>Process/SubProcess/RequestReplyMQ.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType>
+        <xsd:element name="Entrada">
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:element name="EntradaMT" type="xsd:string"/>
+                    <xsd:element name="Componente" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:element>
+    </pd:startType>
+    <pd:startX>106</pd:startX>
+    <pd:startY>82</pd:startY>
+    <pd:returnBindings>
+        <RespuestaMT>
+            <xsl:value-of select="$MQGet/InteractionOutput/text"/>
+        </RespuestaMT>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType>
+        <xsd:element name="RespuestaMT" type="xsd:string"/>
+    </pd:endType>
+    <pd:endX>481</pd:endX>
+    <pd:endY>82</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1462421060076</pd:targetNamespace>
+    <pd:activity name="MQGet">
+        <pd:type>com.tibco.plugin.bwmq.MqGetActivity</pd:type>
+        <pd:resourceType>plugin.bwmq.MqGetActivity</pd:resourceType>
+        <pd:x>347</pd:x>
+        <pd:y>82</pd:y>
+        <config>
+            <version>7.06.00</version>
+            <contentType>Text</contentType>
+            <desttype>QUEUE</desttype>
+            <dynamic>false</dynamic>
+            <accesstype>MQOO_INPUT_AS_Q_DEF</accesstype>
+            <threadpool>%%Jms/ThreatdPoolSize%%</threadpool>
+            <closeOptions>none</closeOptions>
+            <waitforever>false</waitforever>
+            <multiMessage>None</multiMessage>
+            <completeMessage>true</completeMessage>
+            <getOrdered>true</getOrdered>
+            <explicitSync>false</explicitSync>
+            <batchquantity>1</batchquantity>
+            <gmopropctl>PROPERTIES_AS_Q_DEF</gmopropctl>
+            <segmentation>None</segmentation>
+            <connectionresource>/Resources/Connections/MQConnect.mqcon</connectionresource>
+            <templatequeue>%%Jms/mqReply%%</templatequeue>
+            <destination>%%Jms/mqReply%%</destination>
+            <gettimeout>%%Jms/prpTimeout%%</gettimeout>
+            <commitWithSyncPoint>false</commitWithSyncPoint>
+        </config>
+        <pd:inputBindings>
+            <InteractionInput>
+                <mqproperties>
+                    <destination>
+                        <xsl:value-of select="$MQPut/InteractionOutput/mqproperties/replyToQueueName"/>
+                    </destination>
+                    <xsl:if test="$MQPut/InteractionOutput/mqproperties/correlationId">
+                        <correlationId>
+                            <xsl:value-of select="$MQPut/InteractionOutput/mqproperties/correlationId"/>
+                        </correlationId>
+                    </xsl:if>
+                    <xsl:if test="$MQPut/InteractionOutput/mqproperties/messageId">
+                        <messageId>
+                            <xsl:value-of select="$MQPut/InteractionOutput/mqproperties/messageId"/>
+                        </messageId>
+                    </xsl:if>
+                    <xsl:if test="$MQPut/InteractionOutput/mqproperties/groupId">
+                        <groupId>
+                            <xsl:value-of select="$MQPut/InteractionOutput/mqproperties/groupId"/>
+                        </groupId>
+                    </xsl:if>
+                    <xsl:if test="$MQPut/InteractionOutput/mqproperties/characterSet">
+                        <characterSet>
+                            <xsl:value-of select="$MQPut/InteractionOutput/mqproperties/characterSet"/>
+                        </characterSet>
+                    </xsl:if>
+                    <xsl:if test="$MQPut/InteractionOutput/mqproperties/alternateUserId">
+                        <alternateUserId>
+                            <xsl:value-of select="$MQPut/InteractionOutput/mqproperties/alternateUserId"/>
+                        </alternateUserId>
+                    </xsl:if>
+                </mqproperties>
+            </InteractionInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:activity name="MQPut">
+        <pd:type>com.tibco.plugin.bwmq.MqPutActivity</pd:type>
+        <pd:resourceType>plugin.bwmq.MqPutActivity</pd:resourceType>
+        <pd:x>238</pd:x>
+        <pd:y>80</pd:y>
+        <config>
+            <version>7.06.00</version>
+            <contentType>Text</contentType>
+            <desttype>QUEUE</desttype>
+            <dynamic>false</dynamic>
+            <lastSegment>false</lastSegment>
+            <persistence>Not Persistent</persistence>
+            <messagetype>MQMT_REQUEST</messagetype>
+            <expiration>%%Jms/mqExpiration%%</expiration>
+            <priority>%%Jms/mqPriority%%</priority>
+            <reportCoaOptions>None</reportCoaOptions>
+            <reportCodOptions>None</reportCodOptions>
+            <reportExceptionOptions>None</reportExceptionOptions>
+            <reportExpiryOptions>None</reportExpiryOptions>
+            <multiMessage>None</multiMessage>
+            <segmentedMaxSize>0</segmentedMaxSize>
+            <asyncPut>false</asyncPut>
+            <passContext>all</passContext>
+            <clusterloadbalance>false</clusterloadbalance>
+            <segmentation>None</segmentation>
+            <connectionresource>/Resources/Connections/MQConnect.mqcon</connectionresource>
+            <destination>%%Jms/mqRequest%%</destination>
+            <replytodestination>%%Jms/mqReply%%</replytodestination>
+            <dynamicreply>false</dynamicreply>
+            <messageFields/>
+            <properties/>
+            <gencorrid>false</gencorrid>
+            <commitWithSyncPoint>false</commitWithSyncPoint>
+        </config>
+        <pd:inputBindings>
+            <InteractionInput>
+                <mqproperties>
+                    <characterSet>
+                        <xsl:value-of select="$_globalVariables/ns:GlobalVariables/Jms/mqCharSet"/>
+                    </characterSet>
+                </mqproperties>
+                <text>
+                    <xsl:value-of select="concat(&#x9;$_globalVariables/ns:GlobalVariables/Componente/HeaderIni,&#xA;&#x9;$Start/Entrada/Componente,&#xA;&#x9;$_globalVariables/ns:GlobalVariables/Componente/HeaderFin,&#xA;&#x9;$_globalVariables/ns:GlobalVariables/Componente/BodyIni,&#xA;&#x9;$Start/Entrada/Componente,&#xA;&#x9;$_globalVariables/ns:GlobalVariables/Componente/BodyMiddle,&#xA;&#x9;$Start/Entrada/EntradaMT,&#xA;&#x9;$_globalVariables/ns:GlobalVariables/Componente/BodyFin)"/>
+                </text>
+            </InteractionInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>MQPut</pd:from>
+        <pd:to>MQGet</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>MQGet</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>MQPut</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>

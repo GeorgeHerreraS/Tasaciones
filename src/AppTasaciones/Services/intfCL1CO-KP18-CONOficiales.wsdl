@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:pfx0="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/CO_KP18.xsd" xmlns:tns="http://itg.isban.cl/AppOfficeBanking/WSDL/CL1CO-KP18-CONOficiales" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://itg.isban.cl/AppOfficeBanking/WSDL/CL1CO-KP18-CONOficiales">
+    <import namespace="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/CO_KP18.xsd" location="../Resources/Schemas/CO_KP18.xsd"/>
+    <message name="INPUT">
+        <part element="pfx0:INPUT" name="parameters"/>
+    </message>
+    <message name="TIB_CO_KP18_CONOficiales_Response">
+        <part element="pfx0:TIB_CO_KP18_CONOficiales_Response" name="parameters"/>
+    </message>
+    <portType name="portType">
+        <operation name="getOficiales">
+            <input message="tns:INPUT"/>
+            <output message="tns:TIB_CO_KP18_CONOficiales_Response"/>
+        </operation>
+    </portType>
+</definitions>

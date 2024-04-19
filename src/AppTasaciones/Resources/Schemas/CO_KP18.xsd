@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/CO_KP18.xsd"
+	 xmlns:ns0="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/INFO.xsd"
+	 targetNamespace="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/CO_KP18.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:import namespace="http://itg.isban.cl/AppOfficeBanking/Resources/Schemas/INFO.xsd" schemaLocation="INFO.xsd"/>
+	<xs:element name="INPUT">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="USUARIO-ALT" type="xs:string"/>
+				<xs:element name="TERMINAL-ALT" type="xs:string"/>
+				<xs:element name="CANAL-ID" type="xs:string"/>
+				<xs:element name="FILLER" type="xs:string"/>
+				<xs:element name="SEGLLA" type="xs:string"/>
+				<xs:element name="OPCION" type="xs:string"/>
+				<xs:element name="PENUMPU" type="xs:string"/>
+				<xs:element name="PENUMPE" type="xs:string"/>
+				<xs:element name="TIPDOC" type="xs:string"/>
+				<xs:element name="PENUMDO" type="xs:string"/>
+				<xs:element name="SECDOC" type="xs:string"/>
+				<xs:element name="PETIOFI" type="xs:string"/>
+				<xs:element name="IDRECALL" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TIB_CO_KP18_CONOficiales_Response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ns0:INFO"/>
+				<xs:element name="OUTPUT" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ESCALARES" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Id-Recall" type="xs:string" minOccurs="0"/>
+										<xs:element name="CodigoLlamada" type="xs:string" minOccurs="0"/>
+										<xs:element name="Opcion" type="xs:string" minOccurs="0"/>
+										<xs:element name="NumeroPuesto_E" type="xs:string" minOccurs="0"/>
+										<xs:element name="NumeroCliente_E" type="xs:string" minOccurs="0"/>
+										<xs:element name="TipoDocumento" type="xs:string" minOccurs="0"/>
+										<xs:element name="NumeroDocumento" type="xs:string" minOccurs="0"/>
+										<xs:element name="SecuenciaIdentificacionDocumento" type="xs:string" minOccurs="0"/>
+										<xs:element name="TipoOficial_E" type="xs:string" minOccurs="0"/>
+										<xs:element name="NombreFantasia" type="xs:string" minOccurs="0"/>
+										<xs:element name="PrimerApellido" type="xs:string" minOccurs="0"/>
+										<xs:element name="SegundoApellido" type="xs:string" minOccurs="0"/>
+										<xs:element name="NombreRazonSocial" type="xs:string" minOccurs="0"/>
+										<xs:element name="FechaNacimiento" type="xs:string" minOccurs="0"/>
+										<xs:element name="TipoPersona" type="xs:string" minOccurs="0"/>
+										<xs:element name="EstadoPersona" type="xs:string" minOccurs="0"/>
+										<xs:element name="Condicion" type="xs:string" minOccurs="0"/>
+										<xs:element name="NivelAcceso" type="xs:string" minOccurs="0"/>
+										<xs:element name="IndicadorRelacionPersonas" type="xs:string" minOccurs="0"/>
+										<xs:element name="IndicadorContratos" type="xs:string" minOccurs="0"/>
+										<xs:element name="PertenenciaGrupos" type="xs:string" minOccurs="0"/>
+										<xs:element name="IndicadorAvisos" type="xs:string" minOccurs="0"/>
+										<xs:element name="MarcaClienteVip" type="xs:string" minOccurs="0"/>
+										<xs:element name="IndicadorUso2" type="xs:string" minOccurs="0"/>
+										<xs:element name="IndicadorUso3" type="xs:string" minOccurs="0"/>
+										<xs:element name="IndicadorUso4" type="xs:string" minOccurs="0"/>
+										<xs:element name="IndicadorUso5" type="xs:string" minOccurs="0"/>
+										<xs:element name="TipoVia" type="xs:string" minOccurs="0"/>
+										<xs:element name="Calle" type="xs:string" minOccurs="0"/>
+										<xs:element name="Complemento_variable1_ResDir" type="xs:string" minOccurs="0"/>
+										<xs:element name="Complemento_variable1_FecDev" type="xs:string" minOccurs="0"/>
+										<xs:element name="Complemento_variable1_FechCorr" type="xs:string" minOccurs="0"/>
+										<xs:element name="Complemento_variable1_nomcor" type="xs:string" minOccurs="0"/>
+										<xs:element name="Complemento_variable1_filler" type="xs:string" minOccurs="0"/>
+										<xs:element name="Complemento_variable2_DirForBan" type="xs:string" minOccurs="0"/>
+										<xs:element name="Complemento_variable2_filler" type="xs:string" minOccurs="0"/>
+										<xs:element name="NumeroBloque" type="xs:string" minOccurs="0"/>
+										<xs:element name="Localidad" type="xs:string" minOccurs="0"/>
+										<xs:element name="NombreComuna" type="xs:string" minOccurs="0"/>
+										<xs:element name="CodigoPostal" type="xs:string" minOccurs="0"/>
+										<xs:element name="RutaCartero" type="xs:string" minOccurs="0"/>
+										<xs:element name="CodigoProvincia" type="xs:string" minOccurs="0"/>
+										<xs:element name="CodigoPais" type="xs:string" minOccurs="0"/>
+										<xs:element name="MarcaNormalizacion" type="xs:string" minOccurs="0"/>
+										<xs:element name="GlosaTipoOficial" type="xs:string" minOccurs="0"/>
+										<xs:element name="GlosaEstadoPersona" type="xs:string" minOccurs="0"/>
+										<xs:element name="GlosaCondicionPersona" type="xs:string" minOccurs="0"/>
+										<xs:element name="GlosaLocalidad" type="xs:string" minOccurs="0"/>
+										<xs:element name="GlosaComuna" type="xs:string" minOccurs="0"/>
+										<xs:element name="GlosaProvincia" type="xs:string" minOccurs="0"/>
+										<xs:element name="GlosaPais" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="MATRIZ" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="NumeroPuesto" type="xs:string" minOccurs="0"/>
+										<xs:element name="NumeroCliente" type="xs:string" minOccurs="0"/>
+										<xs:element name="TipoOficial" type="xs:string" minOccurs="0"/>
+										<xs:element name="UserId" type="xs:string" minOccurs="0"/>
+										<xs:element name="TipoBanca" type="xs:string" minOccurs="0"/>
+										<xs:element name="RegionOficial" type="xs:string" minOccurs="0"/>
+										<xs:element name="ZonaOficial" type="xs:string" minOccurs="0"/>
+										<xs:element name="NumeroSucursal" type="xs:string" minOccurs="0"/>
+										<xs:element name="CentroCosto" type="xs:string" minOccurs="0"/>
+										<xs:element name="NumeroPuestoDepende" type="xs:string" minOccurs="0"/>
+										<xs:element name="NivelResponsable" type="xs:string" minOccurs="0"/>
+										<xs:element name="EstadoActual" type="xs:string" minOccurs="0"/>
+										<xs:element name="EstadoAnterior" type="xs:string" minOccurs="0"/>
+										<xs:element name="FechaEstado" type="xs:string" minOccurs="0"/>
+										<xs:element name="RangoOficial" type="xs:string" minOccurs="0"/>
+										<xs:element name="SegmentodelOficial" type="xs:string" minOccurs="0"/>
+										<xs:element name="UsuarioAlta" type="xs:string" minOccurs="0"/>
+										<xs:element name="FechaAlta" type="xs:string" minOccurs="0"/>
+										<xs:element name="UsuarioModificacion" type="xs:string" minOccurs="0"/>
+										<xs:element name="TerminalModificacion" type="xs:string" minOccurs="0"/>
+										<xs:element name="SucursalModificacion" type="xs:string" minOccurs="0"/>
+										<xs:element name="Timestamp" type="xs:string" minOccurs="0"/>
+										<xs:element name="Observaciones1" type="xs:string" minOccurs="0"/>
+										<xs:element name="Observaciones2" type="xs:string" minOccurs="0"/>
+										<xs:element name="GlosaTipoOficial_M" type="xs:string" minOccurs="0"/>
+										<xs:element name="GlosaSegmentoOficial" type="xs:string" minOccurs="0"/>
+										<xs:element name="GlosaNumeroSucursal" type="xs:string" minOccurs="0"/>
+										<xs:element name="Indicador" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

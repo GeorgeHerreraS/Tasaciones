@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns1="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Response_KP21.xsd" xmlns:tns="http://xmlns.example.com/1475867572450" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Request_KP21.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Untitled" targetNamespace="http://xmlns.example.com/1475867572450">
+    <wsdl:types>
+        <xs:schema xmlns="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Request_KP21.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Request_KP21.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="CANAL-ID" type="xs:string"/>
+            <xs:element name="ID-RECALL" type="xs:string"/>
+            <xs:element name="INPUT">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns0:USUARIO-ALT"/>
+                        <xs:element ref="ns0:TERMINAL-ALT"/>
+                        <xs:element ref="ns0:CANAL-ID"/>
+                        <xs:element ref="ns0:MWPECDGENT"/>
+                        <xs:element ref="ns0:MWPENUMPER"/>
+                        <xs:element ref="ns0:MWPETIPDOC"/>
+                        <xs:element ref="ns0:MWPENUMDOC"/>
+                        <xs:element ref="ns0:MWPESECDOC"/>
+                        <xs:element ref="ns0:MWPEESTREL"/>
+                        <xs:element ref="ns0:MWKPCODCNL"/>
+                        <xs:element ref="ns0:MWKPCODTPOCRU"/>
+                        <xs:element ref="ns0:ID-RECALL"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MWKPCODCNL" type="xs:string"/>
+            <xs:element name="MWKPCODTPOCRU" type="xs:string"/>
+            <xs:element name="MWPECDGENT" type="xs:string"/>
+            <xs:element name="MWPEESTREL" type="xs:string"/>
+            <xs:element name="MWPENUMDOC" type="xs:string"/>
+            <xs:element name="MWPENUMPER" type="xs:string"/>
+            <xs:element name="MWPESECDOC" type="xs:string"/>
+            <xs:element name="MWPETIPDOC" type="xs:string"/>
+            <xs:element name="TERMINAL-ALT" type="xs:string"/>
+            <xs:element name="USUARIO-ALT" type="xs:string"/>
+        </xs:schema>
+        <xs:schema xmlns="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Response_KP21.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tibco.com/schemas/WsAppSeguros/Schemas/Response_KP21.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="AS_TIB_KP21_Cruce_P_Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns1:INFO"/>
+                        <xs:element ref="ns1:OUTPUT" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CODERR" type="xs:string"/>
+            <xs:element name="DESERR" type="xs:string"/>
+            <xs:element name="ID-RECALL" type="xs:string"/>
+            <xs:element name="IDRECALL">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns1:ID-RECALL" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="INFO">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns1:CODERR"/>
+                        <xs:element ref="ns1:DESERR"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MWKPCODCNL" type="xs:string"/>
+            <xs:element name="MWKPCODTPOCRU" type="xs:string"/>
+            <xs:element name="MWKPNUMOPE" type="xs:string"/>
+            <xs:element name="MWPEACTRIU" type="xs:string"/>
+            <xs:element name="MWPEACTRIUGLS" type="xs:string"/>
+            <xs:element name="MWPEAGRCOM" type="xs:string"/>
+            <xs:element name="MWPECALPAR" type="xs:string"/>
+            <xs:element name="MWPECALPARGLS" type="xs:string"/>
+            <xs:element name="MWPECDGENT" type="xs:string"/>
+            <xs:element name="MWPECODMON" type="xs:string"/>
+            <xs:element name="MWPECODOFI" type="xs:string"/>
+            <xs:element name="MWPECODPRO" type="xs:string"/>
+            <xs:element name="MWPECODPROGLS" type="xs:string"/>
+            <xs:element name="MWPECODSUB" type="xs:string"/>
+            <xs:element name="MWPECODSUBGLS" type="xs:string"/>
+            <xs:element name="MWPECONPER" type="xs:string"/>
+            <xs:element name="MWPEESTOPE" type="xs:string"/>
+            <xs:element name="MWPEESTPER" type="xs:string"/>
+            <xs:element name="MWPEESTREL" type="xs:string"/>
+            <xs:element name="MWPEFECALT" type="xs:string"/>
+            <xs:element name="MWPEFECBRB" type="xs:string"/>
+            <xs:element name="MWPEFECEST" type="xs:string"/>
+            <xs:element name="MWPEFECINI" type="xs:string"/>
+            <xs:element name="MWPEFECTER" type="xs:string"/>
+            <xs:element name="MWPEINDPRO" type="xs:string"/>
+            <xs:element name="MWPEMOTBAJ" type="xs:string"/>
+            <xs:element name="MWPEMOTEST" type="xs:string"/>
+            <xs:element name="MWPEMOTESTGLS" type="xs:string"/>
+            <xs:element name="MWPENOMFAN" type="xs:string"/>
+            <xs:element name="MWPENOMPER" type="xs:string"/>
+            <xs:element name="MWPENUMCON" type="xs:string"/>
+            <xs:element name="MWPENUMDOC" type="xs:string"/>
+            <xs:element name="MWPENUMPER" type="xs:string"/>
+            <xs:element name="MWPENUMPUE" type="xs:string"/>
+            <xs:element name="MWPEOFIVEN" type="xs:string"/>
+            <xs:element name="MWPEORDPAR" type="xs:string"/>
+            <xs:element name="MWPEPRIAPE" type="xs:string"/>
+            <xs:element name="MWPERESINT" type="xs:string"/>
+            <xs:element name="MWPESECDOC" type="xs:string"/>
+            <xs:element name="MWPESEGAPE" type="xs:string"/>
+            <xs:element name="MWPESTREL" type="xs:string"/>
+            <xs:element name="MWPESUBSEG" type="xs:string"/>
+            <xs:element name="MWPESUBSEGGLS" type="xs:string"/>
+            <xs:element name="MWPETIPDOC" type="xs:string"/>
+            <xs:element name="MWPETIPPER" type="xs:string"/>
+            <xs:element name="MatrizProductos">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns1:MWPENUMCON" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPECODOFI" minOccurs="0"/>
+                        <xs:element ref="ns1:MWKPNUMOPE" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPECALPAR" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPECALPARGLS" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEORDPAR" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPECODPRO" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPECODPROGLS" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPECODSUB" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPECODSUBGLS" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEFECBRB" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPESTREL" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPERESINT" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEMOTBAJ" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEFECALT" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPECODMON" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEOFIVEN" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEFECINI" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEFECTER" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEESTOPE" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEFECEST" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEMOTEST" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEMOTESTGLS" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEAGRCOM" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="OUTPUT">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns1:IDRECALL" minOccurs="0"/>
+                        <xs:element ref="ns1:RESPUESTA" minOccurs="0"/>
+                        <xs:element ref="ns1:MatrizProductos" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RESPUESTA">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns1:MWPECDGENT" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPENUMPER" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPETIPDOC" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPENUMDOC" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPESECDOC" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEESTREL" minOccurs="0"/>
+                        <xs:element ref="ns1:MWKPCODCNL" minOccurs="0"/>
+                        <xs:element ref="ns1:MWKPCODTPOCRU" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPENOMFAN" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEPRIAPE" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPESEGAPE" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPENOMPER" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPETIPPER" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEESTPER" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPECONPER" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEACTRIU" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEACTRIUGLS" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPESUBSEG" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPESUBSEGGLS" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPENUMPUE" minOccurs="0"/>
+                        <xs:element ref="ns1:MWPEINDPRO" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:service name="wsCL1MDKP21_Cruce_P">
+        <wsdl:port name="wsCL1MDKP21_Cruce_P" binding="tns:wsCL1MDKP21_Cruce_PBinding">
+            <soap:address location="https://localhost:8295/Services/wsCL1MDKP21_Cruce_P-service.serviceagent"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="portType">
+        <wsdl:operation name="getKP21_Cruce_P">
+            <wsdl:input message="tns:INPUT"/>
+            <wsdl:output message="tns:AS_TIB_KP21_Cruce_P_Response"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="wsCL1MDKP21_Cruce_PBinding" type="tns:portType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getKP21_Cruce_P">
+            <soap:operation style="document" soapAction="/Services/wsCL1MDKP21_Cruce_P/getKP21_Cruce_P"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:message name="INPUT">
+        <wsdl:part name="parameters" element="ns0:INPUT"/>
+    </wsdl:message>
+    <wsdl:message name="AS_TIB_KP21_Cruce_P_Response">
+        <wsdl:part name="parameters" element="ns1:AS_TIB_KP21_Cruce_P_Response"/>
+    </wsdl:message>
+</wsdl:definitions>
